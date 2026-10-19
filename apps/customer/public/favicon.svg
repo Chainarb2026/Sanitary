@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Minimalist Architectural Rounded Tile -->
+  <rect width="100" height="100" rx="22" fill="#0f172a"/>
+  <!-- Subtle Eco Emerald Corner Accent -->
+  <circle cx="82" cy="18" r="4.5" fill="#10b981"/>
+  <!-- Geometric Stencil Mark (Wedge + Slanted Pillar) in Pure White -->
+  <g transform="translate(20, 16) scale(2.1)">
+    <path d="M1 32L15 2L17.2 32H1Z" fill="#ffffff" />
+    <path d="M19.8 9H23.4L27 32H23.2L19.8 9Z" fill="#ffffff" />
+  </g>
+</svg>

@@ -1,0 +1,35 @@
+{
+  "name": "sanitary",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run --workspaces --if-present build",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "dev:api": "npm --workspace=@sanitary/api run dev",
+    "dev:worker": "npm --workspace=@sanitary/api run dev:worker",
+    "dev:customer": "npm --workspace=@sanitary/customer run dev",
+    "build:customer": "npm --workspace=@sanitary/customer run build",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "@typescript-eslint/eslint-plugin": "^8.24.1",
+    "@typescript-eslint/parser": "^8.24.1",
+    "eslint": "^9.20.1",
+    "mongodb-memory-server": "^11.3.0",
+    "prettier": "^3.5.1",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.6"
+  }
+}
