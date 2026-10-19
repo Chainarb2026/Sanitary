@@ -189,7 +189,7 @@ export const Footer: React.FC = () => {
 
       <div className="footer-bottom">
         <div>
-          © {new Date().getFullYear()} Sanitary Environmental Technologies Pvt Ltd. All rights
+          © {new Date().getFullYear()} ChainArb Pvt Ltd. All rights
           reserved.
         </div>
         <div style={{ display: "flex", gap: "20px" }}>
