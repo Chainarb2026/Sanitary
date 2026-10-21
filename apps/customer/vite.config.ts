@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootNodeModules = path.resolve(__dirname, "../../node_modules");
+const backendTarget = process.env.VITE_BACKEND_TARGET || "http://localhost:4000";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -34,7 +35,7 @@ export default defineConfig({
     host: true,
     proxy: {
       "/auth": {
-        target: "http://localhost:4000",
+        target: backendTarget,
         changeOrigin: true,
         bypass: (req) => {
           if (req.headers.accept?.includes("text/html")) {
@@ -43,7 +44,7 @@ export default defineConfig({
         },
       },
       "/waste-types": {
-        target: "http://localhost:4000",
+        target: backendTarget,
         changeOrigin: true,
         bypass: (req) => {
           if (req.headers.accept?.includes("text/html")) {
@@ -52,7 +53,7 @@ export default defineConfig({
         },
       },
       "/addresses": {
-        target: "http://localhost:4000",
+        target: backendTarget,
         changeOrigin: true,
         bypass: (req) => {
           if (req.headers.accept?.includes("text/html")) {
@@ -61,7 +62,7 @@ export default defineConfig({
         },
       },
       "/geo": {
-        target: "http://localhost:4000",
+        target: backendTarget,
         changeOrigin: true,
         bypass: (req) => {
           if (req.headers.accept?.includes("text/html")) {
@@ -70,7 +71,7 @@ export default defineConfig({
         },
       },
       "/bookings": {
-        target: "http://localhost:4000",
+        target: backendTarget,
         changeOrigin: true,
         bypass: (req) => {
           if (req.headers.accept?.includes("text/html")) {
@@ -79,7 +80,7 @@ export default defineConfig({
         },
       },
       "/payments": {
-        target: "http://localhost:4000",
+        target: backendTarget,
         changeOrigin: true,
         bypass: (req) => {
           if (req.headers.accept?.includes("text/html")) {
@@ -88,7 +89,7 @@ export default defineConfig({
         },
       },
       "/ai": {
-        target: "http://localhost:4000",
+        target: backendTarget,
         changeOrigin: true,
         bypass: (req) => {
           if (req.headers.accept?.includes("text/html")) {
@@ -97,11 +98,11 @@ export default defineConfig({
         },
       },
       "/uploads": {
-        target: "http://localhost:4000",
+        target: backendTarget,
         changeOrigin: true,
       },
       "/socket.io": {
-        target: "http://localhost:4000",
+        target: backendTarget,
         ws: true,
         changeOrigin: true,
       },

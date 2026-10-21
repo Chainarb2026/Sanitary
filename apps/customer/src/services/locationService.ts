@@ -1,3 +1,5 @@
+import { resolveUrl } from "../api/client.js";
+
 /**
  * Production-ready Location, Geocoding & Autocomplete Service for Sanitary
  * Supports high-accuracy GPS geolocation, reverse-geocoding, and debounced live search
@@ -766,7 +768,7 @@ export async function searchLocations(
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 3500);
 
-    const url = `/geo/search?q=${encodeURIComponent(query)}&city=${preferredCityId || ""}`;
+    const url = resolveUrl(`/geo/search?q=${encodeURIComponent(query)}&city=${preferredCityId || ""}`);
     const response = await fetch(url, { signal: controller.signal });
     clearTimeout(timeoutId);
 
@@ -894,7 +896,7 @@ export async function reverseGeocodeCoordinates(
     const timeoutId = setTimeout(() => controller.abort(), 4500);
 
     // Call our server-side geocoding endpoint
-    const response = await fetch(`/geo/reverse?lat=${lat}&lng=${lng}`, {
+    const response = await fetch(resolveUrl(`/geo/reverse?lat=${lat}&lng=${lng}`), {
       signal: controller.signal,
       headers: {
         Accept: "application/json",
@@ -933,7 +935,7 @@ export function detectCurrentLocation(): Promise<LocationItem> {
   return new Promise((resolve) => {
     const fallbackToIp = async () => {
       try {
-        const res = await fetch("/geo/ip-detect");
+        const res = await fetch(resolveUrl("/geo/ip-detect"));
         if (res.ok) {
           const data = (await res.json()) as LocationItem;
           resolve(data);

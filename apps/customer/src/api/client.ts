@@ -38,6 +38,16 @@ function onRefreshed(token: string | null) {
   refreshSubscribers = [];
 }
 
+export const BASE_URL = (import.meta.env.VITE_API_URL || "").replace(/\/+$/, "");
+
+export function resolveUrl(endpoint: string): string {
+  if (endpoint.startsWith("http://") || endpoint.startsWith("https://")) {
+    return endpoint;
+  }
+  const normalizedEndpoint = endpoint.startsWith("/") ? endpoint : `/${endpoint}`;
+  return `${BASE_URL}${normalizedEndpoint}`;
+}
+
 export async function apiClient<T>(
   endpoint: string,
   options: RequestInit = {},
@@ -66,8 +76,9 @@ export async function apiClient<T>(
   const signal = options.signal ?? controller.signal;
 
   let response: Response;
+  const targetUrl = resolveUrl(endpoint);
   try {
-    response = await fetch(endpoint, {
+    response = await fetch(targetUrl, {
       ...options,
       headers,
       signal,
@@ -92,7 +103,7 @@ export async function apiClient<T>(
       if (!isRefreshing) {
         isRefreshing = true;
         try {
-          const refreshRes = await fetch("/auth/refresh", {
+          const refreshRes = await fetch(resolveUrl("/auth/refresh"), {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ refreshToken }),

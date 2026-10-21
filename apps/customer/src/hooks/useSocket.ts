@@ -35,12 +35,20 @@ export function useSocket(userId?: string) {
       return;
     }
 
-    const socket = io({
-      auth: { token },
-      transports: ["websocket", "polling"],
-      reconnectionAttempts: 5,
-      reconnectionDelay: 1000,
-    });
+    const wsUrl = import.meta.env.VITE_WS_URL?.trim();
+    const socket = wsUrl
+      ? io(wsUrl, {
+          auth: { token },
+          transports: ["websocket", "polling"],
+          reconnectionAttempts: 5,
+          reconnectionDelay: 1000,
+        })
+      : io({
+          auth: { token },
+          transports: ["websocket", "polling"],
+          reconnectionAttempts: 5,
+          reconnectionDelay: 1000,
+        });
 
     socketRef.current = socket;
 
