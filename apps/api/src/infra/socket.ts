@@ -14,20 +14,38 @@ let io: SocketIOServer | null = null;
  */
 export function initSocketServer(httpServer: HttpServer): SocketIOServer {
   const allowedOrigins = config.CORS_ORIGINS.split(",").map((s) => s.trim());
-  const redis = getRedisClient();
-  const hasPsubscribe =
-    typeof (redis as unknown as { psubscribe?: unknown }).psubscribe === "function";
+  // const redis = getRedisClient();
+  // const hasPsubscribe =
+  //   typeof (redis as unknown as { psubscribe?: unknown }).psubscribe === "function";
 
+  // let adapterOption: ReturnType<typeof createAdapter> | undefined = undefined;
+
+  // if (hasPsubscribe && typeof redis.duplicate === "function") {
+  //   try {
+  //     const pubClient = redis;
+  //     const subClient = pubClient.duplicate();
+  //     subClient.on("error", () => {});
+  //     adapterOption = createAdapter(pubClient, subClient);
+  //   } catch {
+  //     // Fallback to default built-in in-memory adapter
+  //   }
+  // }
+
+  const redis = getRedisClient();
   let adapterOption: ReturnType<typeof createAdapter> | undefined = undefined;
 
-  if (hasPsubscribe && typeof redis.duplicate === "function") {
+  if (typeof redis.duplicate === "function") {
     try {
       const pubClient = redis;
       const subClient = pubClient.duplicate();
-      subClient.on("error", () => {});
+
+      // Ensure the subscription client connects to the channel explicitly
+      void subClient.connect().catch(() => { });
+      subClient.on("error", () => { });
+
       adapterOption = createAdapter(pubClient, subClient);
     } catch {
-      // Fallback to default built-in in-memory adapter
+      logger.warn("[DEV] Socket.io failed to initialize Redis adapter. Falling back to memory.");
     }
   }
 

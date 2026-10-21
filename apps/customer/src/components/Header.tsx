@@ -15,7 +15,7 @@ import {
 import { useAuth } from "../hooks/useAuth.js";
 import { useOnlineStatus } from "../hooks/useOnlineStatus.js";
 import { useTheme } from "../hooks/useTheme.js";
-import { SanitaryLogo, SanitaryMark } from "./SanitaryLogo.js";
+import { SanitaryLogo } from "./SanitaryLogo.js";
 
 export const INDIAN_CITIES = [
   { id: "blr", name: "Bengaluru", state: "Karnataka", partners: 184, isLive: true },
