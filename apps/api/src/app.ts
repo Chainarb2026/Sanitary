@@ -27,8 +27,10 @@ export function createApp(): Express {
   // Security headers
   app.use(helmet());
 
-  // CORS configuration
-  const allowedOrigins = config.CORS_ORIGINS.split(",").map((s) => s.trim());
+  // CORS configuration (strip trailing slashes automatically to prevent CORS header mismatch)
+  const allowedOrigins = config.CORS_ORIGINS.split(",")
+    .map((s) => s.trim().replace(/\/+$/, ""))
+    .filter(Boolean);
   app.use(
     cors({
       origin: (origin, callback) => {

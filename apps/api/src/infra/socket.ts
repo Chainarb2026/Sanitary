@@ -13,7 +13,9 @@ let io: SocketIOServer | null = null;
  * Initializes Socket.IO with the Redis adapter for multi-instance scaling.
  */
 export function initSocketServer(httpServer: HttpServer): SocketIOServer {
-  const allowedOrigins = config.CORS_ORIGINS.split(",").map((s) => s.trim());
+  const allowedOrigins = config.CORS_ORIGINS.split(",")
+    .map((s) => s.trim().replace(/\/+$/, ""))
+    .filter(Boolean);
   // const redis = getRedisClient();
   // const hasPsubscribe =
   //   typeof (redis as unknown as { psubscribe?: unknown }).psubscribe === "function";

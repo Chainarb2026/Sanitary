@@ -2,7 +2,6 @@ import { partnerRepo, type PartnerRecord, type CreatePartnerData } from "./repo.
 import { geoService } from "./geoService.js";
 import { userService } from "../users/service.js";
 import { userRepo } from "../users/repo.js";
-import { config } from "../../infra/config.js";
 import {
   NotFoundError,
   ConflictError,
