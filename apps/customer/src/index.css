@@ -1200,24 +1200,72 @@ h4 {
     flex-direction: column;
     padding: 24px 16px;
     min-height: auto;
+    border-radius: 28px;
   }
 
   .uber-hero-bg {
     position: relative;
     width: 100%;
-    height: 320px;
-    margin-top: 24px;
+    height: 280px;
+    margin-top: 20px;
   }
 
   .uber-hero-bg-img {
     mask-image: none;
     -webkit-mask-image: none;
-    border-radius: 18px;
+    border-radius: 20px;
   }
 
   .uber-booking-widget {
     max-width: 100%;
     padding: 24px 20px;
+    border-radius: 24px;
+  }
+
+  .bioflux-hero-title {
+    font-size: clamp(24px, 5.5vw, 32px);
+  }
+
+  .uber-slide-counter-pill {
+    bottom: 12px;
+    right: 12px;
+    left: 12px;
+    justify-content: space-between;
+    padding: 6px 12px;
+    gap: 6px;
+  }
+
+  .uber-slide-caption-text {
+    max-width: 150px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .uber-hero-container {
+    padding: 18px 12px;
+    border-radius: 22px;
+  }
+
+  .uber-booking-widget {
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+
+  .uber-hero-bg {
+    height: 230px;
+    margin-top: 16px;
+  }
+
+  .uber-slide-counter-pill {
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    padding: 5px 10px;
+  }
+
+  .uber-slide-caption-text {
+    display: none;
   }
 }
 
@@ -2387,19 +2435,56 @@ h4 {
   color: var(--color-brand);
 }
 
-/* RESPONSIVE BREAKPOINTS */
+/* ==========================================================================
+   COMPREHENSIVE RESPONSIVE DESIGN SYSTEM (ALL DEVICES & SCREEN SIZES)
+   Mobile (320px - 480px), Tablet (481px - 768px), Laptop/Desktop (769px+)
+   ========================================================================== */
+
 @media (max-width: 768px) {
+  /* 1. Header & Navigation */
+  .header-schedule-btn {
+    display: none !important;
+  }
+
+  .header-top-banner {
+    font-size: 11px !important;
+    padding: 6px 10px !important;
+    gap: 6px !important;
+  }
+
+  .site-header-inner {
+    padding: 10px 14px;
+    gap: 10px;
+  }
+
+  /* 2. Urban Marketplace */
+  .sn-marketplace-root {
+    padding: 8px 16px 84px 16px;
+    gap: 36px;
+  }
+
   .sn-omnibar-grid {
     flex-wrap: wrap;
+    gap: 10px;
   }
 
   .sn-locality-capsule {
     order: 1;
-    flex: 1;
+    flex: 1 1 180px;
+    min-width: 0;
+  }
+
+  .sn-locality-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    max-width: 170px;
   }
 
   .sn-cart-capsule {
     order: 2;
+    flex-shrink: 0;
   }
 
   .sn-search-capsule {
@@ -2409,15 +2494,16 @@ h4 {
   }
 
   .sn-card {
-    flex: 0 0 260px;
+    flex: 0 0 250px;
   }
 
   .sn-specs-grid {
     grid-template-columns: 1fr;
   }
 
+  /* 3. Floating Bottom Action Dock: Safely Elevated Above Mobile BottomNav */
   .sn-bottom-dock {
-    bottom: 16px;
+    bottom: calc(76px + var(--safe-bottom));
     width: calc(100% - 24px);
   }
 
@@ -2425,6 +2511,7 @@ h4 {
     padding: 12px 16px;
     flex-direction: column;
     gap: 12px;
+    border-radius: 18px;
   }
 
   .sn-dock-summary {
@@ -2435,6 +2522,85 @@ h4 {
   .sn-dock-cta-btn {
     width: 100%;
     justify-content: center;
+  }
+
+  /* 4. Modals & Dialogs */
+  .sn-modal-overlay {
+    padding: 14px;
+  }
+
+  .sn-modal-card {
+    border-radius: 20px;
+    max-height: 92vh;
+  }
+
+  .sn-modal-hero {
+    height: 190px;
+  }
+
+  .sn-modal-body {
+    padding: 18px;
+    gap: 16px;
+  }
+
+  .sn-locality-dialog {
+    width: 100%;
+    border-radius: 20px;
+    padding: 18px;
+  }
+
+  /* 5. Flat Pricing Section */
+  .flat-pricing-card {
+    padding: 22px 16px !important;
+    border-radius: 20px !important;
+  }
+
+  /* 6. Payment Gateway Mode Tabs */
+  .payment-gateway-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Compact Mobile Viewport (< 480px) */
+  .header-logo-subtext {
+    display: none !important;
+  }
+
+  .header-divider {
+    display: none !important;
+  }
+
+  .site-header-inner {
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .sn-card {
+    flex: 0 0 230px;
+  }
+
+  .sn-card-media {
+    aspect-ratio: 16 / 11;
+  }
+
+  .sn-card-body {
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .sn-cat-pill {
+    padding: 7px 14px;
+    font-size: 12px;
+  }
+
+  .flat-pricing-card {
+    padding: 18px 12px !important;
+    border-radius: 18px !important;
+  }
+
+  .site-footer {
+    padding: 40px 16px 80px 16px;
   }
 }
 

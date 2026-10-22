@@ -431,11 +431,13 @@ export const DirectionMapTracker: React.FC<DirectionMapTrackerProps> = ({
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
+            flexWrap: "wrap",
+            gap: "12px",
             background: "var(--bg-elevated)",
             border: "1px solid var(--border-subtle)",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "14px", flex: "1 1 220px", minWidth: 0 }}>
             <div
               style={{
                 width: "48px",

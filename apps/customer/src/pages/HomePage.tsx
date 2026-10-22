@@ -274,8 +274,9 @@ export const HomePage: React.FC = () => {
       {/* 3. FLAT-FEE TRANSPARENT PRICING CALCULATOR (LIGHT, CLEAN, CONSUMER-FRIENDLY) */}
       <section id="flat-pricing" style={{ scrollMarginTop: "90px" }}>
         <div
+          className="flat-pricing-card"
           style={{
-            padding: "36px 32px",
+            padding: "clamp(20px, 4vw, 36px) clamp(16px, 3.5vw, 32px)",
             background: "#ffffff",
             border: "1px solid #e2e8f0",
             borderRadius: "24px",
@@ -318,10 +319,11 @@ export const HomePage: React.FC = () => {
           </div>
 
           <div
+            className="flat-pricing-grid"
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-              gap: "32px",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
+              gap: "clamp(18px, 3vw, 32px)",
               alignItems: "start",
             }}
           >
@@ -634,7 +636,7 @@ export const HomePage: React.FC = () => {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
             gap: "24px",
           }}
         >
@@ -793,7 +795,7 @@ export const HomePage: React.FC = () => {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))",
             gap: "20px",
           }}
         >
@@ -907,7 +909,7 @@ export const HomePage: React.FC = () => {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))",
             gap: "24px",
           }}
         >

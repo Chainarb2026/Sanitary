@@ -51,6 +51,7 @@ export const Header: React.FC = () => {
 
       {/* Top Banner Tag: "Let's Clean Our Cities" */}
       <div
+        className="header-top-banner"
         style={{
           background: "var(--bg-secondary)",
           borderBottom: "1px solid var(--border-subtle)",
@@ -112,6 +113,7 @@ export const Header: React.FC = () => {
               <div>
                 <SanitaryLogo variant="full" size={22} color="var(--text-primary)" />
                 <div
+                  className="header-logo-subtext"
                   style={{
                     fontSize: "10px",
                     fontWeight: 700,
@@ -129,6 +131,7 @@ export const Header: React.FC = () => {
 
             {/* Visual Divider */}
             <div
+              className="header-divider"
               style={{
                 height: "22px",
                 width: "1px",
@@ -325,7 +328,7 @@ export const Header: React.FC = () => {
             {/* Primary Action Button: Schedule Pickup */}
             <Link
               to="/book"
-              className="btn btn-primary"
+              className="btn btn-primary header-schedule-btn"
               style={{
                 padding: "8px 16px",
                 fontSize: "13px",

@@ -595,6 +595,8 @@ export const PartnerPage: React.FC = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
+            flexWrap: "wrap",
+            gap: "10px",
             fontSize: "12px",
             boxShadow: "0 2px 8px rgba(5, 150, 105, 0.06)",
           }}

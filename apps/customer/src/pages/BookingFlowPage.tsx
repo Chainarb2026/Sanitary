@@ -248,7 +248,7 @@ export const BookingFlowPage: React.FC = () => {
       }}
     >
       {/* Step Header */}
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "10px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
           <SanitaryMark size={28} />
           <div>

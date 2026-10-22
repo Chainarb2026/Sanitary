@@ -416,7 +416,14 @@ export const PaymentView: React.FC<PaymentViewProps> = ({
       </div>
 
       {/* Payment Gateway Mode Tabs */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "10px" }}>
+      <div
+        className="payment-gateway-grid"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 140px), 1fr))",
+          gap: "10px",
+        }}
+      >
         {/* Gateway 1: Razorpay Checkout */}
         <button
           type="button"
