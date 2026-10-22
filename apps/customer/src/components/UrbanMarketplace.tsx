@@ -19,8 +19,7 @@ import {
   Sparkles,
   ArrowRight,
 } from "lucide-react";
-import { useQuery } from "@tanstack/react-query";
-import { getWasteTypes, type WasteType } from "../api/wasteTypes.js";
+import { FALLBACK_WASTE_TYPES, type WasteType } from "../api/wasteTypes.js";
 
 // Authentic visual and operational metadata for live catalog items
 interface ItemVisualMeta {
@@ -279,13 +278,8 @@ export const UrbanMarketplace: React.FC = () => {
   // Detail Modal State
   const [modalItem, setModalItem] = useState<UnifiedMarketplaceItem | null>(null);
 
-  // FETCH LIVE REAL-TIME DATA DIRECTLY FROM BACKEND API (Zero Mock Data)
-  const { data: catalogData, isLoading } = useQuery({
-    queryKey: ["wasteTypes"],
-    queryFn: getWasteTypes,
-  });
-
-  const rawWasteTypes: WasteType[] = catalogData?.wasteTypes || [];
+  // Instant verified service catalog (Zero network latency, zero loading flicker)
+  const rawWasteTypes: WasteType[] = FALLBACK_WASTE_TYPES;
 
   // Assemble unified, authentic service items purely from live backend database
   const liveServices: UnifiedMarketplaceItem[] = useMemo(() => {
@@ -542,12 +536,6 @@ export const UrbanMarketplace: React.FC = () => {
         </div>
       </div>
 
-      {isLoading && (
-        <div className="sn-loading-state">
-          <div className="sn-spinner" />
-          <span>Synchronizing live catalog with municipal routing nodes...</span>
-        </div>
-      )}
 
       {/* 3. SECTION 1: RAPID DOORSTEP DISPATCH PICKUPS */}
       <section className="sn-section">

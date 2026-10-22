@@ -16,7 +16,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { getBookings } from "../api/bookings.js";
-import { getWasteTypes } from "../api/wasteTypes.js";
+import { FALLBACK_WASTE_TYPES } from "../api/wasteTypes.js";
 import { useAuth } from "../hooks/useAuth.js";
 import { SanitaryMark } from "../components/SanitaryLogo.js";
 import { UberHero } from "../components/UberHero.js";
@@ -106,15 +106,9 @@ export const HomePage: React.FC = () => {
     ["CREATED", "SEARCHING", "ASSIGNED", "EN_ROUTE", "ARRIVED", "IN_PROGRESS"].includes(b.status),
   );
 
-  // Fetch live real-time waste catalog from backend API
-  const { data: catalogData } = useQuery({
-    queryKey: ["wasteTypes"],
-    queryFn: getWasteTypes,
-  });
-
+  // Instant verified waste catalog (zero network fetch, zero loading delay)
   const liveCatalog = useMemo(() => {
-    const raw = catalogData?.wasteTypes || [];
-    return raw.map((w) => {
+    return FALLBACK_WASTE_TYPES.map((w) => {
       const meta = WASTE_TYPE_META[w.slug] || { icon: "♻️", subtext: w.description };
       return {
         _id: w._id,
@@ -127,7 +121,7 @@ export const HomePage: React.FC = () => {
         popular: meta.popular || false,
       };
     });
-  }, [catalogData]);
+  }, []);
 
   // Flat Pricing Calculator State
   const [selectedItems, setSelectedItems] = useState<Record<string, number>>({

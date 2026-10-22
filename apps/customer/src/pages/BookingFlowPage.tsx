@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { Sparkles, MapPin, Calendar, CreditCard, ArrowRight, ArrowLeft } from "lucide-react";
 import { useAuth } from "../hooks/useAuth.js";
-import { getWasteTypes, calculateQuote, type PricingBreakdown } from "../api/wasteTypes.js";
+import { getWasteTypes, calculateQuote, FALLBACK_WASTE_TYPES, type PricingBreakdown } from "../api/wasteTypes.js";
 import { createBooking, type BookingSlot } from "../api/bookings.js";
 import { type Address } from "../api/addresses.js";
 import { SanitaryMark } from "../components/SanitaryLogo.js";
@@ -35,13 +35,14 @@ export const BookingFlowPage: React.FC = () => {
     }
   }, [authLoading, isAuthenticated, navigate]);
 
-  // Load catalog
+  // Load catalog (instant fallback data prevents any loading flash or empty states)
   const { data: catalogData } = useQuery({
     queryKey: ["wasteTypes"],
     queryFn: getWasteTypes,
+    initialData: { wasteTypes: FALLBACK_WASTE_TYPES },
   });
 
-  const wasteTypes = catalogData?.wasteTypes || [];
+  const wasteTypes = catalogData?.wasteTypes || FALLBACK_WASTE_TYPES;
 
   // Flow State
   const [currentStep, setCurrentStep] = useState<BookingStep>("waste");
