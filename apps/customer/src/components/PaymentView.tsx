@@ -167,7 +167,7 @@ export const PaymentView: React.FC<PaymentViewProps> = ({
         description: `Doorstep Waste Pickup & Recycling #${bookingId.slice(-6).toUpperCase()}`,
         image: "https://sanitary.eco/logo192.png",
         order_id: order.orderId,
-        theme: { color: "#059669" },
+        theme: { color: "var(--color-brand)" },
         prefill: {
           name: "Customer",
           contact: "+919876543210",
@@ -270,7 +270,7 @@ export const PaymentView: React.FC<PaymentViewProps> = ({
               borderRadius: "50%",
               background: isExpired
                 ? "linear-gradient(135deg, #f43f5e 0%, #e11d48 100%)"
-                : "linear-gradient(135deg, #059669 0%, #047857 100%)",
+                : "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -406,7 +406,7 @@ export const PaymentView: React.FC<PaymentViewProps> = ({
               fontSize: "28px",
               fontWeight: 900,
               fontFamily: "var(--font-display)",
-              color: "#059669",
+              color: "var(--color-brand)",
               lineHeight: 1,
             }}
           >
@@ -567,7 +567,7 @@ export const PaymentView: React.FC<PaymentViewProps> = ({
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                color: "#059669",
+                color: "var(--color-brand)",
               }}
             >
               <Lock size={18} />
@@ -607,7 +607,7 @@ export const PaymentView: React.FC<PaymentViewProps> = ({
               padding: "14px",
               fontSize: "15px",
               fontWeight: 800,
-              background: "linear-gradient(135deg, #059669 0%, #047857 100%)",
+              background: "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)",
               color: "#ffffff",
               boxShadow: "0 4px 16px rgba(5, 150, 105, 0.35)",
               borderRadius: "12px",
@@ -664,15 +664,15 @@ export const PaymentView: React.FC<PaymentViewProps> = ({
                   {/* Position markers */}
                   <rect x="5" y="5" width="26" height="26" fill="#0f172a" rx="4" />
                   <rect x="9" y="9" width="18" height="18" fill="#ffffff" rx="2" />
-                  <rect x="13" y="13" width="10" height="10" fill="#059669" rx="2" />
+                  <rect x="13" y="13" width="10" height="10" fill="#0284c7" rx="2" />
 
                   <rect x="69" y="5" width="26" height="26" fill="#0f172a" rx="4" />
                   <rect x="73" y="9" width="18" height="18" fill="#ffffff" rx="2" />
-                  <rect x="77" y="13" width="10" height="10" fill="#059669" rx="2" />
+                  <rect x="77" y="13" width="10" height="10" fill="#0284c7" rx="2" />
 
                   <rect x="5" y="69" width="26" height="26" fill="#0f172a" rx="4" />
                   <rect x="9" y="73" width="18" height="18" fill="#ffffff" rx="2" />
-                  <rect x="13" y="77" width="10" height="10" fill="#059669" rx="2" />
+                  <rect x="13" y="77" width="10" height="10" fill="#0284c7" rx="2" />
 
                   {/* QR Matrix Bits */}
                   <rect x="38" y="10" width="6" height="6" fill="#0f172a" />
@@ -680,7 +680,7 @@ export const PaymentView: React.FC<PaymentViewProps> = ({
                   <rect x="38" y="26" width="6" height="6" fill="#0f172a" />
                   <rect x="10" y="38" width="6" height="6" fill="#0f172a" />
                   <rect x="22" y="46" width="6" height="6" fill="#0f172a" />
-                  <rect x="42" y="42" width="16" height="16" fill="#059669" rx="3" />
+                  <rect x="42" y="42" width="16" height="16" fill="#0284c7" rx="3" />
                   <rect x="70" y="40" width="6" height="6" fill="#0f172a" />
                   <rect x="80" y="50" width="6" height="6" fill="#0f172a" />
                   <rect x="64" y="64" width="8" height="8" fill="#0f172a" />
@@ -726,7 +726,7 @@ export const PaymentView: React.FC<PaymentViewProps> = ({
                     border: "none",
                     borderRadius: "6px",
                     padding: "4px 8px",
-                    color: "#047857",
+                    color: "var(--color-brand)",
                     cursor: "pointer",
                     display: "flex",
                     alignItems: "center",
@@ -763,7 +763,7 @@ export const PaymentView: React.FC<PaymentViewProps> = ({
                     padding: "12px",
                     fontSize: "13px",
                     borderRadius: "10px",
-                    background: "linear-gradient(135deg, #059669 0%, #047857 100%)",
+                    background: "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)",
                     color: "#ffffff",
                   }}
                 >
@@ -802,7 +802,7 @@ export const PaymentView: React.FC<PaymentViewProps> = ({
               display: "flex",
               alignItems: "center",
               gap: "8px",
-              color: "#047857",
+              color: "var(--color-brand)",
               fontWeight: 800,
               fontSize: "15px",
             }}
@@ -825,7 +825,7 @@ export const PaymentView: React.FC<PaymentViewProps> = ({
               padding: "12px",
               fontSize: "14px",
               borderRadius: "10px",
-              background: "linear-gradient(135deg, #059669 0%, #047857 100%)",
+              background: "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)",
               color: "#ffffff",
             }}
           >
@@ -847,10 +847,10 @@ export const PaymentView: React.FC<PaymentViewProps> = ({
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-          <ShieldCheck size={14} color="#059669" />
+          <ShieldCheck size={14} color="var(--color-brand)" />
           <span>256-Bit SSL Encrypted • PCI-DSS Level 1 & RBI Digital Guidelines Compliant</span>
         </div>
-        <div style={{ color: "#047857", fontWeight: 700 }}>
+        <div style={{ color: "var(--color-brand)", fontWeight: 700 }}>
           Zero Hidden Surcharges
         </div>
       </div>

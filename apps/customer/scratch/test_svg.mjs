@@ -1,0 +1,40 @@
+import fs from "fs";
+
+// Create an SVG demo for Concept 3: Circular Aero-Vortex S
+const svgContent = `
+<svg width="400" height="120" viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark preview background -->
+  <rect width="400" height="120" rx="16" fill="#090D16"/>
+  
+  <!-- Standalone Aero-Vortex S Mark -->
+  <g transform="translate(30, 25)">
+    <!-- Defs for Gradients -->
+    <defs>
+      <linearGradient id="vortexGrad" x1="2" y1="2" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#34D399"/>
+        <stop offset="50%" stop-color="#059669"/>
+        <stop offset="100%" stop-color="#0284C7"/>
+      </linearGradient>
+      <linearGradient id="sparkleGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#6EE7B7"/>
+        <stop offset="100%" stop-color="#10B981"/>
+      </linearGradient>
+    </defs>
+    
+    <!-- Outer Aero-Vortex Sweep 1 (Top loop sweeping down) -->
+    <path d="M32 9C29 4 23 1 16 1C7.716 1 1 7.716 1 16C1 19.5 2.2 22.7 4.2 25.2L9.6 20.8C8.6 19.4 8 17.8 8 16C8 11.582 11.582 8 16 8C19.8 8 23 10.6 23.8 14.2L30.7 12.4C29.6 8.5 26.2 5.5 22 4.5" fill="url(#vortexGrad)"/>
+    
+    <!-- Outer Aero-Vortex Sweep 2 (Bottom loop sweeping up) -->
+    <path d="M8 31C11 36 17 39 24 39C32.284 39 39 32.284 39 24C39 20.5 37.8 17.3 35.8 14.8L30.4 19.2C31.4 20.6 32 22.2 32 24C32 28.418 28.418 32 24 32C20.2 32 17 29.4 16.2 25.8L9.3 27.6C10.4 31.5 13.8 34.5 18 35.5" fill="url(#vortexGrad)"/>
+    
+    <!-- Central Dynamic Velocity S-Bridge -->
+    <path d="M11 15L29 25H21L9 15H11Z" fill="#10B981"/>
+    
+    <!-- Cleaning Sparkle Identity Beacon -->
+    <path d="M29 6C29 9 32 9 32 9C32 9 29 9 29 12C29 9 26 9 26 9C26 9 29 9 29 6Z" fill="url(#sparkleGrad)"/>
+  </g>
+</svg>
+`;
+
+fs.writeFileSync("/Users/dineshrajneelakandan/Desktop/Sanitary/apps/customer/public/test-logo-preview.svg", svgContent);
+console.log("Written test-logo-preview.svg");

@@ -1,0 +1,142 @@
+import fs from "fs";
+
+// Generate a high-definition visual comparison of 6 different "S" concepts for Sanitary
+const showcaseSvg = `
+<svg width="860" height="580" viewBox="0 0 860 580" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="emeraldGrad" x1="0" y1="0" x2="60" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0" y1="0" x2="60" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="gleamGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#A7F3D0"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Deep Obsidian Showcase Canvas -->
+  <rect width="860" height="580" rx="24" fill="#090D16"/>
+  <rect x="1" y="1" width="858" height="578" rx="23" stroke="rgba(16, 185, 129, 0.2)" stroke-width="1.5"/>
+
+  <!-- Title & Header -->
+  <text x="40" y="48" font-family="'Space Grotesk', system-ui, sans-serif" font-size="22" font-weight="800" fill="#FFFFFF" letter-spacing="-0.02em">
+    SANITARY: 6 CREATIVE EXPLORATIONS FOR THE "S" EMBLEM
+  </text>
+  <text x="40" y="72" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="13" font-weight="600" fill="#94A3B8">
+    Fusing Pixar Optical Warmth, SpaceX Aerospace Precision & Hygiene Cleaning Identity
+  </text>
+
+  <!-- ================= GRID ROW 1 ================= -->
+
+  <!-- CARD 1: Clean-Sweep Comet S -->
+  <g transform="translate(40, 100)">
+    <rect width="240" height="200" rx="18" fill="#0F172A" stroke="rgba(255,255,255,0.08)"/>
+    <text x="20" y="32" font-family="'Space Grotesk', sans-serif" font-size="15" font-weight="800" fill="#34D399">1. Clean-Sweep Comet S</text>
+    <text x="20" y="50" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="500" fill="#64748B">SpaceX Trajectory Swoosh + Sparkle</text>
+    
+    <!-- Symbol 1 -->
+    <g transform="translate(90, 75)">
+      <!-- S Comet path with upward tail swoosh -->
+      <path d="M48 6C40 1 24 0 14 6C4 12 4 24 14 28C24 32 40 33 42 42C44 51 32 58 20 58C10 58 2 52 0 46L8 40C9 44 14 48 20 48C26 48 32 44 31 38C30 31 16 30 10 24C4 18 4 6 16 2C26 -2 44 0 54 8L48 6Z" fill="url(#emeraldGrad)"/>
+      <!-- Trajectory Swoosh tail -->
+      <path d="M42 42C48 34 54 22 58 12L52 14C48 22 44 32 40 38L42 42Z" fill="#34D399"/>
+      <!-- Sparkle beacon at swoosh apex -->
+      <path d="M58 8C58 12 62 12 62 12C62 12 58 12 58 16C58 12 54 12 54 12C54 12 58 12 58 8Z" fill="url(#gleamGrad)"/>
+    </g>
+  </g>
+
+  <!-- CARD 2: Mobius Eco-Recycle S -->
+  <g transform="translate(310, 100)">
+    <rect width="240" height="200" rx="18" fill="#0F172A" stroke="rgba(255,255,255,0.08)"/>
+    <text x="20" y="32" font-family="'Space Grotesk', sans-serif" font-size="15" font-weight="800" fill="#38BDF8">2. Mobius Recycle S</text>
+    <text x="20" y="50" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="500" fill="#64748B">Continuous Closed-Loop Ribbon</text>
+
+    <!-- Symbol 2 -->
+    <g transform="translate(90, 75)">
+      <!-- Upper Loop Ribbon -->
+      <path d="M48 18C48 8 38 0 25 0C11 0 0 11 0 24C0 27 1 30 3 33L11 27C10 25 9 23 9 21C9 14 15 8 23 8C31 8 38 13 39 20L48 18Z" fill="url(#cyanGrad)"/>
+      <!-- Lower Loop Ribbon -->
+      <path d="M3 42C3 52 13 60 26 60C40 60 51 49 51 36C51 33 50 30 48 27L40 33C41 35 42 37 42 39C42 46 36 52 28 52C20 52 13 47 12 40L3 42Z" fill="url(#emeraldGrad)"/>
+      <!-- Interlocking Central Fold -->
+      <path d="M12 20L39 40H30L3 20H12Z" fill="#10B981"/>
+    </g>
+  </g>
+
+  <!-- CARD 3: Spark Shield S -->
+  <g transform="translate(580, 100)">
+    <rect width="240" height="200" rx="18" fill="#0F172A" stroke="rgba(255,255,255,0.08)"/>
+    <text x="20" y="32" font-family="'Space Grotesk', sans-serif" font-size="15" font-weight="800" fill="#34D399">3. Spark Shield S</text>
+    <text x="20" y="50" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="500" fill="#64748B">Negative-Space Diamond Cleanser</text>
+
+    <!-- Symbol 3 -->
+    <g transform="translate(95, 75)">
+      <!-- Outer Shield Stencil S with Chamfers -->
+      <path d="M46 8L38 0H10L0 10V22L8 28L0 34V50L10 60H40L50 50V36L42 30L50 24V8L46 8ZM10 12H36V20H18L10 12ZM40 48H14V40H32L40 48Z" fill="url(#emeraldGrad)"/>
+      <!-- Center Gleam Spark Cutout -->
+      <path d="M25 24C25 29 29 29 29 29C29 29 25 29 25 34C25 29 21 29 21 29C21 29 25 29 25 24Z" fill="#A7F3D0"/>
+    </g>
+  </g>
+
+  <!-- ================= GRID ROW 2 ================= -->
+
+  <!-- CARD 4: Dual-Droplet Cyclone S -->
+  <g transform="translate(40, 330)">
+    <rect width="240" height="200" rx="18" fill="#0F172A" stroke="rgba(255,255,255,0.08)"/>
+    <text x="20" y="32" font-family="'Space Grotesk', sans-serif" font-size="15" font-weight="800" fill="#38BDF8">4. Dual-Droplet Cyclone S</text>
+    <text x="20" y="50" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="500" fill="#64748B">Water Hygiene & Organic Flow</text>
+
+    <!-- Symbol 4 -->
+    <g transform="translate(95, 80)">
+      <!-- Top Droplet Blade -->
+      <path d="M44 14C44 5 35 0 24 0C10 0 0 10 0 22C0 26 2 30 5 33L14 26C11 23 10 20 10 17C10 11 16 7 24 7C32 7 36 12 36 17C36 21 32 24 24 28L28 36C38 31 44 24 44 14Z" fill="url(#cyanGrad)"/>
+      <!-- Bottom Inverted Droplet Blade -->
+      <path d="M4 46C4 55 13 60 24 60C38 60 48 50 48 38C48 34 46 30 43 27L34 34C37 37 38 40 38 43C38 49 32 53 24 53C16 53 12 48 12 43C12 39 16 36 24 32L20 24C10 29 4 36 4 46Z" fill="url(#emeraldGrad)"/>
+      <!-- Droplet Center Splash -->
+      <circle cx="24" cy="30" r="3.5" fill="#A7F3D0"/>
+    </g>
+  </g>
+
+  <!-- CARD 5: SpaceX Thrust & Fin S -->
+  <g transform="translate(310, 330)">
+    <rect width="240" height="200" rx="18" fill="#0F172A" stroke="rgba(255,255,255,0.08)"/>
+    <text x="20" y="32" font-family="'Space Grotesk', sans-serif" font-size="15" font-weight="800" fill="#34D399">5. SpaceX Thrust Fin S</text>
+    <text x="20" y="50" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="500" fill="#64748B">Aerospace Chamfers & Speed Slits</text>
+
+    <!-- Symbol 5 -->
+    <g transform="translate(95, 80)">
+      <!-- Top Winglet Bar -->
+      <path d="M0 8L8 0H48L42 12H10L0 8Z" fill="url(#emeraldGrad)"/>
+      <!-- Upper Spine -->
+      <path d="M0 8V26L12 32V14L4 8H0Z" fill="url(#emeraldGrad)"/>
+      <!-- Central Thrust Crossing -->
+      <path d="M4 26L48 26L40 38L0 38L4 26Z" fill="#10B981"/>
+      <!-- Lower Spine -->
+      <path d="M48 32V50L36 56V38L44 32H48Z" fill="url(#emeraldGrad)"/>
+      <!-- Bottom Winglet Bar -->
+      <path d="M48 50L40 58H0L6 46H38L48 50Z" fill="url(#emeraldGrad)"/>
+    </g>
+  </g>
+
+  <!-- CARD 6: Pixar Spring Luxo S -->
+  <g transform="translate(580, 330)">
+    <rect width="240" height="200" rx="18" fill="#0F172A" stroke="rgba(255,255,255,0.08)"/>
+    <text x="20" y="32" font-family="'Space Grotesk', sans-serif" font-size="15" font-weight="800" fill="#38BDF8">6. Pixar Spring Luxo S</text>
+    <text x="20" y="50" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="500" fill="#64748B">Curvaceous Sculpted Character</text>
+
+    <!-- Symbol 6 -->
+    <g transform="translate(95, 75)">
+      <!-- Smooth Sculpted Pixar curve with varying thick-thin stroke -->
+      <path d="M44 12C38 3 26 0 16 4C6 8 3 18 8 26C13 34 35 34 37 44C39 52 30 58 19 56C10 54 4 46 2 40L10 35C12 39 16 45 22 46C27 47 30 42 28 36C26 29 7 28 3 18C-1 8 6 1 18 0C30 -1 42 3 50 12L44 12Z" fill="url(#emeraldGrad)"/>
+      <!-- Friendly Pixar gleam bulb accent -->
+      <circle cx="44" cy="12" r="4" fill="#FDE047"/>
+    </g>
+  </g>
+</svg>
+`;
+
+fs.writeFileSync("/Users/dineshrajneelakandan/Desktop/Sanitary/apps/customer/public/s-options-showcase.svg", showcaseSvg);
+console.log("Showcase SVG written to apps/customer/public/s-options-showcase.svg");

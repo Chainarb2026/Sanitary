@@ -215,8 +215,8 @@ export const DirectionMapTracker: React.FC<DirectionMapTrackerProps> = ({
           >
             <defs>
               <linearGradient id="routeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#059669" />
-                <stop offset="100%" stopColor="#10b981" />
+                <stop offset="0%" stopColor="#0284c7" />
+                <stop offset="100%" stopColor="#38bdf8" />
               </linearGradient>
             </defs>
             {/* The Connected Driving Road Path */}
@@ -255,7 +255,7 @@ export const DirectionMapTracker: React.FC<DirectionMapTrackerProps> = ({
         >
           <div
             style={{
-              background: "#10b981",
+              background: "var(--color-brand)",
               borderRadius: "50%",
               padding: "7px",
               boxShadow: "0 0 16px rgba(16, 185, 129, 0.9)",
@@ -319,7 +319,7 @@ export const DirectionMapTracker: React.FC<DirectionMapTrackerProps> = ({
           >
             <div
               style={{
-                background: "linear-gradient(135deg, #059669 0%, #0d9488 100%)",
+                background: "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)",
                 borderRadius: "50%",
                 padding: "8px",
                 boxShadow: "0 0 24px rgba(5, 150, 105, 0.9)",
@@ -372,8 +372,8 @@ export const DirectionMapTracker: React.FC<DirectionMapTrackerProps> = ({
                 width: "10px",
                 height: "10px",
                 borderRadius: "50%",
-                background: "#10b981",
-                boxShadow: "0 0 10px #10b981",
+                background: "var(--color-brand)",
+                boxShadow: "0 0 12px rgba(56, 189, 248, 0.7)",
               }}
             />
             <div>
@@ -441,7 +441,7 @@ export const DirectionMapTracker: React.FC<DirectionMapTrackerProps> = ({
                 width: "48px",
                 height: "48px",
                 borderRadius: "50%",
-                background: "linear-gradient(135deg, #059669 0%, #0d9488 100%)",
+                background: "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",

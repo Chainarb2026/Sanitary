@@ -1,11 +1,36 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <!-- Minimalist Architectural Rounded Tile -->
-  <rect width="100" height="100" rx="22" fill="#0f172a"/>
-  <!-- Subtle Eco Emerald Corner Accent -->
-  <circle cx="82" cy="18" r="4.5" fill="#10b981"/>
-  <!-- Geometric Stencil Mark (Wedge + Slanted Pillar) in Pure White -->
-  <g transform="translate(20, 16) scale(2.1)">
-    <path d="M1 32L15 2L17.2 32H1Z" fill="#ffffff" />
-    <path d="M19.8 9H23.4L27 32H23.2L19.8 9Z" fill="#ffffff" />
+  <defs>
+    <!-- SpaceX Cyber-Cyan Aero Gradient -->
+    <linearGradient id="favFinGrad" x1="0" y1="0" x2="38" y2="38" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+    <!-- Central Kinetic Thrust Velocity Slit -->
+    <linearGradient id="favThrustGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7DD3FC"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <!-- Cleaning Diamond Gleam Gradient -->
+    <linearGradient id="favGleamGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E0F2FE"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+  </defs>
+  <!-- Sleek Deep Space Black Container Tile -->
+  <rect width="100" height="100" rx="24" fill="#060911"/>
+  <!-- Option 5: SpaceX Thrust & Fin S Emblem -->
+  <g transform="translate(13, 12) scale(2.0)">
+    <!-- Top Winglet Bar with 45° Chamfers -->
+    <path d="M1 6L7 0.5H34L29 6.5H8L1 6Z" fill="url(#favFinGrad)"/>
+    <!-- Upper Vertical Aero-Spine -->
+    <path d="M1 6V17L9 21.5V11L4 6H1Z" fill="url(#favFinGrad)"/>
+    <!-- Kinetic Central Thrust Crossing -->
+    <path d="M3 17.5L34 17.5L28 24.5L1 24.5L3 17.5Z" fill="url(#favThrustGrad)"/>
+    <!-- Lower Vertical Aero-Spine -->
+    <path d="M34 21V32L26 36.5V26.5L31 21H34Z" fill="url(#favFinGrad)"/>
+    <!-- Bottom Winglet Bar with 45° Chamfers -->
+    <path d="M34 32L28 37.5H1L6 31.5H27L34 32Z" fill="url(#favFinGrad)"/>
+    <!-- Four-Point Diamond Cleaning Gleam Beacon -->
+    <path d="M31 1.5C31 4 33.5 4 33.5 4C33.5 4 31 4 31 6.5C31 4 28.5 4 28.5 4C28.5 4 31 4 31 1.5Z" fill="url(#favGleamGrad)"/>
   </g>
 </svg>

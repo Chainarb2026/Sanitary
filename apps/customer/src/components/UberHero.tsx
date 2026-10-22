@@ -20,6 +20,7 @@ import {
   INDIAN_LOCATIONS_DIRECTORY,
   type LocationItem,
 } from "../services/locationService.js";
+import { SanitaryMark } from "./SanitaryLogo.js";
 
 export interface HeroSlide {
   id: number;
@@ -31,15 +32,15 @@ export interface HeroSlide {
 const UBER_HERO_SLIDES: HeroSlide[] = [
   {
     id: 1,
-    image: "/uber-collecting-garbage.jpg",
-    alt: "Sanitary specialist in official SANITARY uniform collecting doorstep garbage bags and recycling box at residential apartment",
-    caption: "Collecting Waste & Recyclables at Your Doorstep",
+    image: "/hero-sanitary-doorstep.jpg",
+    alt: "Professional Sanitary specialist in official uniform collecting transparent recyclable bags outside luxury apartment in Bangalore",
+    caption: "Doorstep Recyclable Bag Pickup & Zero-Landfill Certificate",
   },
   {
     id: 2,
-    image: "/uber-doorstep-pickup.jpg",
-    alt: "Sanitary partner in branded uniform at residential doorstep handover in Bangalore",
-    caption: "Doorstep Collection in Under 15 Minutes",
+    image: "/hero-sanitary-ev-hub.jpg",
+    alt: "Clean-Tech SANITARY Tata Ultra EV and Ace commercial fleet charging under solar canopy in tech park",
+    caption: "100% Electric Tata EV Fleet & Solar Hub Charging",
   },
   {
     id: 3,
@@ -49,9 +50,21 @@ const UBER_HERO_SLIDES: HeroSlide[] = [
   },
   {
     id: 4,
+    image: "/uber-collecting-garbage.jpg",
+    alt: "Sanitary specialist in official SANITARY uniform collecting doorstep garbage bags and recycling box at residential apartment",
+    caption: "Odor-Free Segregated Bag Collection at Doorstep",
+  },
+  {
+    id: 5,
     image: "/uber-fleet-dispatch.jpg",
     alt: "Sanitary specialist in branded uniform giving thumbs up with tablet beside branded EV fleet",
-    caption: "Real-Time GPS Dispatch Across Indian Metros",
+    caption: "Real-Time GPS Dispatch with Under 15-Minute SLA",
+  },
+  {
+    id: 6,
+    image: "/uber-doorstep-pickup.jpg",
+    alt: "Sanitary partner in branded uniform at residential doorstep handover in Bangalore",
+    caption: "Zero-Hassle Doorstep Handover Across Indian Metros",
   },
 ];
 
@@ -86,7 +99,7 @@ export const UberHero: React.FC = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Background Slider State (3-second auto-slide)
+  // Background Slider State (3.5-second auto-slide)
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -96,7 +109,7 @@ export const UberHero: React.FC = () => {
 
   useEffect(() => {
     if (isPaused) return;
-    const interval = setInterval(nextSlide, 3000);
+    const interval = setInterval(nextSlide, 3500);
     return () => clearInterval(interval);
   }, [isPaused, nextSlide]);
 
@@ -241,11 +254,11 @@ export const UberHero: React.FC = () => {
 
   return (
     <div
-      className="uber-hero-container"
+      className="uber-hero-container style4-bioflux"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* 1. Expansive Transparent Background Image Slider (Bigger in size, occupies transparently) */}
+      {/* 1. Expansive Background Image Slider */}
       <div className="uber-hero-bg">
         <img
           key={activeSlide.image}
@@ -254,31 +267,52 @@ export const UberHero: React.FC = () => {
           className="uber-hero-bg-img"
         />
 
-        {/* Floating Slide Counter Pill at bottom right */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: "20px",
-            right: "24px",
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            background: "rgba(15, 23, 42, 0.75)",
-            backdropFilter: "blur(12px)",
-            padding: "6px 14px",
-            borderRadius: "9999px",
-            zIndex: 15,
-            color: "#ffffff",
-            fontSize: "11px",
-            fontWeight: 700,
-          }}
-        >
-          <Sparkles size={12} color="#10b981" />
-          <span>{activeSlide.caption}</span>
-          <span style={{ opacity: 0.5 }}>•</span>
-          <span>
+        {/* Floating Slide Counter & Navigation Pill at bottom right */}
+        <div className="uber-slide-counter-pill">
+          <button
+            type="button"
+            className="uber-slide-nav-mini"
+            onClick={(e) => {
+              e.stopPropagation();
+              setCurrentSlideIndex((prev) => (prev - 1 + UBER_HERO_SLIDES.length) % UBER_HERO_SLIDES.length);
+            }}
+            aria-label="Previous photo"
+            title="Previous photo"
+          >
+            ‹
+          </button>
+          <Sparkles size={13} color="#38bdf8" />
+          <span className="uber-slide-caption-text">{activeSlide.caption}</span>
+          <span style={{ opacity: 0.4 }}>•</span>
+          <div className="uber-slide-dots">
+            {UBER_HERO_SLIDES.map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrentSlideIndex(idx);
+                }}
+                className={`uber-slide-dot ${idx === currentSlideIndex ? "active" : ""}`}
+                aria-label={`Slide ${idx + 1}`}
+              />
+            ))}
+          </div>
+          <span style={{ fontSize: "11px", opacity: 0.75, fontWeight: 800 }}>
             {currentSlideIndex + 1}/{UBER_HERO_SLIDES.length}
           </span>
+          <button
+            type="button"
+            className="uber-slide-nav-mini"
+            onClick={(e) => {
+              e.stopPropagation();
+              setCurrentSlideIndex((prev) => (prev + 1) % UBER_HERO_SLIDES.length);
+            }}
+            aria-label="Next photo"
+            title="Next photo"
+          >
+            ›
+          </button>
         </div>
       </div>
 
@@ -366,49 +400,16 @@ export const UberHero: React.FC = () => {
           )}
         </div>
 
-        {/* Highlighted Tag: "Book now and we will collect your wastes" */}
-        <div
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "8px",
-            padding: "6px 14px",
-            borderRadius: "9999px",
-            background: "rgba(5, 150, 105, 0.1)",
-            border: "1px solid rgba(5, 150, 105, 0.28)",
-            color: "var(--color-brand)",
-            fontSize: "12px",
-            fontWeight: 800,
-            letterSpacing: "0.02em",
-            marginBottom: "16px",
-            boxShadow: "0 2px 8px rgba(5, 150, 105, 0.08)",
-          }}
-        >
-          <span
-            style={{
-              display: "inline-block",
-              width: "8px",
-              height: "8px",
-              borderRadius: "50%",
-              background: "#059669",
-              boxShadow: "0 0 8px #059669",
-            }}
-          />
-          <span>Book now and we will collect your wastes</span>
+        {/* Circular Bio-Flux Highlight Tag */}
+        <div className="bioflux-hero-tag">
+          <span className="bioflux-pulse-dot" />
+          <span>🌱 100% Certified Circular Diversion • Live EV Fleet</span>
         </div>
 
-        {/* Uber Hero Heading: "Request a pickup" */}
-        <h1
-          style={{
-            fontSize: "clamp(32px, 4vw, 42px)",
-            fontWeight: 800,
-            lineHeight: 1.1,
-            letterSpacing: "-0.03em",
-            marginBottom: "18px",
-            color: "var(--text-primary)",
-          }}
-        >
-          Request a pickup
+        {/* Hero Heading with SanitaryMark */}
+        <h1 className="bioflux-hero-title">
+          <SanitaryMark size={34} />
+          <span>Request a pickup</span>
         </h1>
 
         {/* Uber Time Selector Pill: "🕒 Pickup now ⌵" */}
@@ -416,20 +417,7 @@ export const UberHero: React.FC = () => {
           <button
             type="button"
             onClick={() => setTimeDropdownOpen(!timeDropdownOpen)}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              padding: "8px 16px",
-              borderRadius: "9999px",
-              background: "var(--bg-secondary)",
-              border: "1px solid var(--border-subtle)",
-              color: "var(--text-primary)",
-              fontSize: "14px",
-              fontWeight: 700,
-              cursor: "pointer",
-              transition: "background 0.2s ease",
-            }}
+            className="bioflux-time-pill"
           >
             <Clock size={16} />
             <span>{pickupTime === "now" ? "Pickup now" : "Schedule for later"}</span>
@@ -924,25 +912,16 @@ export const UberHero: React.FC = () => {
             </div>
           </div>
 
-          {/* Solid Black Button: "See prices" (Uber Style) */}
+          {/* CTA Button */}
           <button type="submit" className="uber-btn-black">
-            <span>See prices</span>
-            <ArrowRight size={17} />
+            <span>Book Doorstep EV Pickup</span>
+            <ArrowRight size={18} />
           </button>
         </form>
 
-        {/* Uber Trust Footnote */}
-        <div
-          style={{
-            marginTop: "16px",
-            fontSize: "12px",
-            color: "var(--text-muted)",
-            display: "flex",
-            alignItems: "center",
-            gap: "6px",
-          }}
-        >
-          <span style={{ color: "var(--color-brand)", fontWeight: 700 }}>⚡</span>
+        {/* Trust Footnote */}
+        <div className="bioflux-trust-foot">
+          <span className="bioflux-foot-icon">⚡</span>
           <span>Verified Sanitary partner in electric EV arrives in under 15 mins</span>
         </div>
       </div>

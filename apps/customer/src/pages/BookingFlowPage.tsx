@@ -6,6 +6,7 @@ import { useAuth } from "../hooks/useAuth.js";
 import { getWasteTypes, calculateQuote, type PricingBreakdown } from "../api/wasteTypes.js";
 import { createBooking, type BookingSlot } from "../api/bookings.js";
 import { type Address } from "../api/addresses.js";
+import { SanitaryMark } from "../components/SanitaryLogo.js";
 import { BagSizeSelector } from "../components/BagSizeSelector.js";
 import { AddressMapPicker } from "../components/AddressMapPicker.js";
 import { SlotPicker } from "../components/SlotPicker.js";
@@ -247,21 +248,26 @@ export const BookingFlowPage: React.FC = () => {
     >
       {/* Step Header */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+          <SanitaryMark size={28} />
+          <div>
+            <h1 style={{ fontSize: "22px", fontWeight: 800, margin: 0, color: "var(--text-primary)" }}>
+              Book Doorstep Pickup
+            </h1>
+          </div>
+        </div>
         <div>
-          <h1 style={{ fontSize: "22px", fontWeight: 800, margin: 0, color: "#0f172a" }}>
-            Book Doorstep Pickup
-          </h1>
-          <div style={{ fontSize: "13px", color: "#059669", fontWeight: 700, marginTop: "2px" }}>
+          <div style={{ fontSize: "13px", color: "var(--color-brand)", fontWeight: 700, marginTop: "2px" }}>
             {STEPS[currentStepIndex]?.label}
           </div>
         </div>
         <span
           style={{
             fontSize: "12px",
-            color: "#065f46",
+            color: "var(--color-brand)",
             fontWeight: 800,
-            background: "#ecfdf5",
-            border: "1px solid #a7f3d0",
+            background: "rgba(56, 189, 248, 0.1)",
+            border: "1px solid rgba(56, 189, 248, 0.35)",
             padding: "4px 12px",
             borderRadius: "9999px",
           }}
@@ -275,10 +281,10 @@ export const BookingFlowPage: React.FC = () => {
         style={{
           display: "flex",
           gap: "8px",
-          background: "#f1f5f9",
+          background: "var(--bg-secondary)",
           padding: "5px",
           borderRadius: "9999px",
-          border: "1px solid #e2e8f0",
+          border: "1px solid var(--border-subtle)",
         }}
       >
         {STEPS.map((s, idx) => {
@@ -292,11 +298,11 @@ export const BookingFlowPage: React.FC = () => {
                 height: "6px",
                 borderRadius: "9999px",
                 background: isActive
-                  ? "linear-gradient(90deg, #059669 0%, #10b981 100%)"
+                  ? "linear-gradient(90deg, #0284c7 0%, #38bdf8 100%)"
                   : isDone
-                    ? "#059669"
+                    ? "var(--color-brand)"
                     : "#e2e8f0",
-                boxShadow: isActive ? "0 0 8px rgba(5, 150, 105, 0.4)" : "none",
+                boxShadow: isActive ? "0 0 8px rgba(56, 189, 248, 0.4)" : "none",
                 transition: "all 0.3s ease",
               }}
               title={s.label}
@@ -330,8 +336,8 @@ export const BookingFlowPage: React.FC = () => {
             borderRadius: "14px",
             background:
               "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 253, 244, 0.94) 100%), url('/uber-fleet-dispatch.jpg') right center/cover no-repeat",
-            border: "1px solid rgba(5, 150, 105, 0.25)",
-            boxShadow: "0 4px 16px rgba(5, 150, 105, 0.06)",
+            border: "1px solid rgba(56, 189, 248, 0.25)",
+            boxShadow: "0 4px 16px rgba(56, 189, 248, 0.1)",
             fontSize: "13px",
           }}
         >
@@ -340,20 +346,20 @@ export const BookingFlowPage: React.FC = () => {
               width: "32px",
               height: "32px",
               borderRadius: "50%",
-              background: "linear-gradient(135deg, #059669 0%, #047857 100%)",
+              background: "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               color: "#ffffff",
               flexShrink: 0,
-              boxShadow: "0 2px 6px rgba(5, 150, 105, 0.3)",
+              boxShadow: "0 2px 6px rgba(56, 189, 248, 0.35)",
             }}
           >
             <MapPin size={16} />
           </div>
           <div style={{ flex: 1, minWidth: 0 }}>
-            <span style={{ fontWeight: 800, color: "#047857" }}>Pickup Location: </span>
-            <span style={{ color: "#0f172a", fontWeight: 600 }}>{urlAddress}</span>
+            <span style={{ fontWeight: 800, color: "var(--color-brand)" }}>Pickup Location: </span>
+            <span style={{ color: "var(--text-primary)", fontWeight: 600 }}>{urlAddress}</span>
           </div>
         </div>
       )}
@@ -457,7 +463,7 @@ export const BookingFlowPage: React.FC = () => {
               flexDirection: "column",
               gap: "14px",
               borderRadius: "18px",
-              border: "1px solid rgba(5, 150, 105, 0.2)",
+              border: "1px solid rgba(56, 189, 248, 0.2)",
               background:
                 "linear-gradient(135deg, rgba(255, 255, 255, 0.97) 0%, rgba(240, 253, 244, 0.93) 100%), url('/uber-doorstep-pickup.jpg') right center/cover no-repeat",
               boxShadow: "0 8px 24px -4px rgba(15, 23, 42, 0.05)",
@@ -469,7 +475,7 @@ export const BookingFlowPage: React.FC = () => {
                 fontWeight: 800,
                 textTransform: "uppercase",
                 letterSpacing: "0.05em",
-                color: "#047857",
+                color: "var(--color-brand)",
               }}
             >
               Booking Summary
@@ -484,19 +490,19 @@ export const BookingFlowPage: React.FC = () => {
                     width: "30px",
                     height: "30px",
                     borderRadius: "8px",
-                    background: "#ecfdf5",
-                    border: "1px solid #a7f3d0",
+                    background: "rgba(56, 189, 248, 0.1)",
+                    border: "1px solid rgba(56, 189, 248, 0.35)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    color: "#059669",
+                    color: "var(--color-brand)",
                     flexShrink: 0,
                   }}
                 >
                   <MapPin size={16} />
                 </div>
                 <div>
-                  <strong style={{ color: "#0f172a", fontSize: "14px" }}>{selectedAddress.addressLine1}</strong>
+                  <strong style={{ color: "var(--text-primary)", fontSize: "14px" }}>{selectedAddress.addressLine1}</strong>
                   <div style={{ color: "#64748b", marginTop: "2px" }}>
                     {selectedAddress.city} • {selectedAddress.pincode}
                   </div>
@@ -510,19 +516,19 @@ export const BookingFlowPage: React.FC = () => {
                   width: "30px",
                   height: "30px",
                   borderRadius: "8px",
-                  background: "#ecfdf5",
-                  border: "1px solid #a7f3d0",
+                  background: "rgba(56, 189, 248, 0.1)",
+                  border: "1px solid rgba(56, 189, 248, 0.35)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color: "#059669",
+                  color: "var(--color-brand)",
                   flexShrink: 0,
                 }}
               >
                 <Calendar size={16} />
               </div>
               <div>
-                <strong style={{ color: "#0f172a", fontSize: "14px" }}>
+                <strong style={{ color: "var(--text-primary)", fontSize: "14px" }}>
                   {slot.type === "asap"
                     ? "ASAP (15-30 mins guaranteed arrival)"
                     : `${slot.date} (${slot.startTime} - ${slot.endTime})`}

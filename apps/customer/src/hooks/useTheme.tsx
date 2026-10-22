@@ -20,8 +20,8 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     } catch {
       // Ignore storage errors
     }
-    // Default to Pristine White (matching reference image)
-    return "light";
+    // Default to Blue & Black Theme
+    return "dark";
   });
 
   useEffect(() => {

@@ -19,20 +19,20 @@ export const BottomNav: React.FC = () => {
       >
         <div
           style={{
-            background: "linear-gradient(135deg, #10b981 0%, #0d9488 100%)",
+            background: "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)",
             borderRadius: "50%",
             width: "44px",
             height: "44px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            boxShadow: "0 4px 14px rgba(16, 185, 129, 0.4)",
+            boxShadow: "0 4px 14px rgba(56, 189, 248, 0.45)",
             color: "#ffffff",
           }}
         >
           <PlusCircle size={24} />
         </div>
-        <span style={{ fontWeight: 700, color: "var(--color-teal)" }}>Pickup</span>
+        <span style={{ fontWeight: 700, color: "var(--color-brand)" }}>Pickup</span>
       </NavLink>
 
       <NavLink to="/history" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>

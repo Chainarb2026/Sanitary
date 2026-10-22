@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
   Radio,
-  Truck,
   CheckCircle2,
   ArrowRight,
   ShieldCheck,
@@ -11,6 +10,7 @@ import {
 import { matchDemoPartner, type MatchedPartnerProfile } from "../api/bookings.js";
 import { useSocket } from "../hooks/useSocket.js";
 import { useAuth } from "../hooks/useAuth.js";
+import { SanitaryMark } from "./SanitaryLogo.js";
 
 interface FindingPartnerViewProps {
   bookingId: string;
@@ -153,10 +153,10 @@ export const FindingPartnerView: React.FC<FindingPartnerViewProps> = ({
         gap: "20px",
         padding: "24px",
         borderRadius: "20px",
-        border: "1px solid rgba(5, 150, 105, 0.22)",
+        border: "1px solid rgba(2, 132, 199, 0.22)",
         background:
           "linear-gradient(135deg, rgba(255, 255, 255, 0.97) 0%, rgba(240, 253, 250, 0.94) 100%), url('/pixar-doorstep-pickup.jpg') center/cover no-repeat",
-        boxShadow: "0 16px 40px -4px rgba(15, 23, 42, 0.08), 0 4px 16px -2px rgba(5, 150, 105, 0.06)",
+        boxShadow: "0 16px 40px -4px rgba(15, 23, 42, 0.08), 0 4px 16px -2px rgba(2, 132, 199, 0.06)",
         textAlign: "center",
       }}
     >
@@ -168,7 +168,7 @@ export const FindingPartnerView: React.FC<FindingPartnerViewProps> = ({
           position: "relative",
           overflow: "hidden",
           borderRadius: "16px",
-          border: "1px solid rgba(5, 150, 105, 0.3)",
+          border: "1px solid rgba(2, 132, 199, 0.3)",
           boxShadow: "inset 0 2px 10px rgba(0, 0, 0, 0.3)",
           display: "flex",
           alignItems: "center",
@@ -190,7 +190,7 @@ export const FindingPartnerView: React.FC<FindingPartnerViewProps> = ({
             width: "100px",
             height: "100px",
             borderRadius: "50%",
-            border: isMatched ? "2px solid #34d399" : "2px solid rgba(52, 211, 153, 0.45)",
+            border: isMatched ? "2px solid #34d399" : "2px solid rgba(56, 189, 248, 0.45)",
             animation: isMatched ? "none" : "pulse 2s infinite ease-out",
             transition: "all 0.5s ease",
           }}
@@ -201,7 +201,7 @@ export const FindingPartnerView: React.FC<FindingPartnerViewProps> = ({
             width: "170px",
             height: "170px",
             borderRadius: "50%",
-            border: isMatched ? "1px solid rgba(52, 211, 153, 0.5)" : "1px solid rgba(52, 211, 153, 0.3)",
+            border: isMatched ? "1px solid rgba(56, 189, 248, 0.5)" : "1px solid rgba(56, 189, 248, 0.3)",
             animation: isMatched ? "none" : "pulse 2.5s infinite ease-out",
           }}
         />
@@ -211,7 +211,7 @@ export const FindingPartnerView: React.FC<FindingPartnerViewProps> = ({
             width: "240px",
             height: "240px",
             borderRadius: "50%",
-            border: "1px dashed rgba(52, 211, 153, 0.25)",
+            border: "1px dashed rgba(56, 189, 248, 0.25)",
           }}
         />
 
@@ -224,20 +224,20 @@ export const FindingPartnerView: React.FC<FindingPartnerViewProps> = ({
             height: "68px",
             borderRadius: "50%",
             background: isMatched
-              ? "linear-gradient(135deg, #059669 0%, #10b981 100%)"
-              : "linear-gradient(135deg, #047857 0%, #059669 100%)",
+              ? "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)"
+              : "linear-gradient(135deg, #0284c7 0%, #0369a1 100%)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             color: "#ffffff",
             boxShadow: isMatched
-              ? "0 0 30px rgba(52, 211, 153, 0.8)"
-              : "0 0 25px rgba(5, 150, 105, 0.6)",
+              ? "0 0 30px rgba(56, 189, 248, 0.8)"
+              : "0 0 25px rgba(2, 132, 199, 0.6)",
             transition: "all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
             transform: isMatched ? "scale(1.1)" : "scale(1)",
           }}
         >
-          {isMatched ? <CheckCircle2 size={36} /> : <Truck size={32} className="animate-pulse" />}
+          {isMatched ? <CheckCircle2 size={36} /> : <SanitaryMark size={36} className="animate-pulse" />}
         </div>
 
         {/* Live HUD Badge */}
@@ -260,7 +260,7 @@ export const FindingPartnerView: React.FC<FindingPartnerViewProps> = ({
             boxShadow: "0 2px 8px rgba(0, 0, 0, 0.12)",
           }}
         >
-          <Radio size={13} className={isMatched ? "" : "animate-pulse"} color="#059669" />
+          <Radio size={13} className={isMatched ? "" : "animate-pulse"} color="var(--color-brand)" />
           <span>
             {isMatched
               ? "Partner Connected (100% Electric EV)"
@@ -279,8 +279,8 @@ export const FindingPartnerView: React.FC<FindingPartnerViewProps> = ({
                 width: "9px",
                 height: "9px",
                 borderRadius: "50%",
-                background: "#059669",
-                boxShadow: "0 0 10px #059669",
+                background: "var(--color-brand)",
+                boxShadow: "0 0 12px rgba(56, 189, 248, 0.8)",
               }}
             />
             <h3 style={{ fontSize: "18px", fontWeight: 800, margin: 0, color: "#0f172a" }}>
@@ -306,7 +306,7 @@ export const FindingPartnerView: React.FC<FindingPartnerViewProps> = ({
               boxShadow: "0 1px 4px rgba(15, 23, 42, 0.04)",
             }}
           >
-            <MapPin size={13} color="#059669" />
+            <MapPin size={13} color="var(--color-brand)" />
             <span>Pickup at: <strong style={{ color: "#0f172a" }}>{customerAddress}</strong></span>
           </div>
         </div>
@@ -327,10 +327,10 @@ export const FindingPartnerView: React.FC<FindingPartnerViewProps> = ({
               fontSize: "13px",
               fontWeight: 800,
               margin: "0 auto",
-              boxShadow: "0 2px 6px rgba(5, 150, 105, 0.06)",
+              boxShadow: "0 2px 6px rgba(2, 132, 199, 0.06)",
             }}
           >
-            <Sparkles size={15} color="#059669" />
+            <Sparkles size={15} color="var(--color-brand)" />
             <span>Pickup Partner Confirmed!</span>
           </div>
 
@@ -343,7 +343,7 @@ export const FindingPartnerView: React.FC<FindingPartnerViewProps> = ({
               background: "rgba(255, 255, 255, 0.95)",
               backdropFilter: "blur(10px)",
               border: "1px solid #a7f3d0",
-              boxShadow: "0 8px 24px -4px rgba(5, 150, 105, 0.08)",
+              boxShadow: "0 8px 24px -4px rgba(2, 132, 199, 0.08)",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
@@ -356,12 +356,12 @@ export const FindingPartnerView: React.FC<FindingPartnerViewProps> = ({
                   width: "52px",
                   height: "52px",
                   borderRadius: "50%",
-                  background: "linear-gradient(135deg, #059669 0%, #10b981 100%)",
+                  background: "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   fontSize: "24px",
-                  boxShadow: "0 4px 14px rgba(5, 150, 105, 0.35)",
+                  boxShadow: "0 4px 14px rgba(2, 132, 199, 0.35)",
                 }}
               >
                 👨🏽‍✈️
@@ -378,7 +378,7 @@ export const FindingPartnerView: React.FC<FindingPartnerViewProps> = ({
                       padding: "2px 8px",
                       borderRadius: "9999px",
                       background: "#ecfdf5",
-                      color: "#059669",
+                      color: "var(--color-brand)",
                       border: "1px solid #a7f3d0",
                     }}
                   >
@@ -404,7 +404,7 @@ export const FindingPartnerView: React.FC<FindingPartnerViewProps> = ({
                     fontWeight: 700,
                   }}
                 >
-                  <ShieldCheck size={13} color="#059669" />
+                  <ShieldCheck size={13} color="var(--color-brand)" />
                   <span>Verified Sanitary Specialist & Safety Certified</span>
                 </div>
               </div>
@@ -426,7 +426,7 @@ export const FindingPartnerView: React.FC<FindingPartnerViewProps> = ({
               <div style={{ fontSize: "17px", fontWeight: 900, color: "#064e3b", fontFamily: "var(--font-display)" }}>
                 ~{partner?.etaMinutes || 6} mins
               </div>
-              <div style={{ fontSize: "11px", color: "#059669", fontWeight: 700 }}>
+              <div style={{ fontSize: "11px", color: "var(--color-brand)", fontWeight: 700 }}>
                 {partner?.distanceKm || 1.4} km away
               </div>
             </div>
@@ -444,7 +444,7 @@ export const FindingPartnerView: React.FC<FindingPartnerViewProps> = ({
                 fontWeight: 800,
                 background: "linear-gradient(135deg, #059669 0%, #047857 100%)",
                 color: "#ffffff",
-                boxShadow: "0 4px 16px rgba(5, 150, 105, 0.35)",
+                boxShadow: "0 4px 16px rgba(2, 132, 199, 0.35)",
                 borderRadius: "12px",
               }}
             >

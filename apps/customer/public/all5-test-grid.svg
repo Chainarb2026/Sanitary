@@ -1,0 +1,71 @@
+
+<svg width="900" height="300" viewBox="0 0 900 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="emeraldGrad" x1="0" y1="0" x2="38" y2="38" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0" y1="0" x2="38" y2="38" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="gleamGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#A7F3D0"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="300" fill="#090D16"/>
+
+  <!-- Render each of the 5 options in 38x38 boxes -->
+  <!-- Option 1 -->
+  <g transform="translate(40, 50)">
+    <rect width="38" height="38" stroke="rgba(255,255,255,0.2)" fill="none"/>
+    <g transform="translate(1, 0) scale(0.61)">
+      <path d="M48 6C40 1 24 0 14 6C4 12 4 24 14 28C24 32 40 33 42 42C44 51 32 58 20 58C10 58 2 52 0 46L8 40C9 44 14 48 20 48C26 48 32 44 31 38C30 31 16 30 10 24C4 18 4 6 16 2C26 -2 44 0 54 8L48 6Z" fill="url(#emeraldGrad)"/>
+      <path d="M42 42C48 34 54 22 58 12L52 14C48 22 44 32 40 38L42 42Z" fill="#34D399"/>
+      <path d="M58 8C58 12 62 12 62 12C62 12 58 12 58 16C58 12 54 12 54 12C54 12 58 12 58 8Z" fill="url(#gleamGrad)"/>
+    </g>
+  </g>
+
+  <!-- Option 2 -->
+  <g transform="translate(140, 50)">
+    <rect width="38" height="38" stroke="rgba(255,255,255,0.2)" fill="none"/>
+    <g transform="translate(3, 0) scale(0.62)">
+      <path d="M48 18C48 8 38 0 25 0C11 0 0 11 0 24C0 27 1 30 3 33L11 27C10 25 9 23 9 21C9 14 15 8 23 8C31 8 38 13 39 20L48 18Z" fill="url(#cyanGrad)"/>
+      <path d="M3 42C3 52 13 60 26 60C40 60 51 49 51 36C51 33 50 30 48 27L40 33C41 35 42 37 42 39C42 46 36 52 28 52C20 52 13 47 12 40L3 42Z" fill="url(#emeraldGrad)"/>
+      <path d="M12 20L39 40H30L3 20H12Z" fill="#10B981"/>
+    </g>
+  </g>
+
+  <!-- Option 3 -->
+  <g transform="translate(240, 50)">
+    <rect width="38" height="38" stroke="rgba(255,255,255,0.2)" fill="none"/>
+    <g transform="translate(3, 0) scale(0.62)">
+      <path d="M46 8L38 0H10L0 10V22L8 28L0 34V50L10 60H40L50 50V36L42 30L50 24V8L46 8ZM10 12H36V20H18L10 12ZM40 48H14V40H32L40 48Z" fill="url(#emeraldGrad)"/>
+      <path d="M25 24C25 29 29 29 29 29C29 29 25 29 25 34C25 29 21 29 21 29C21 29 25 29 25 24Z" fill="#A7F3D0"/>
+    </g>
+  </g>
+
+  <!-- Option 4 -->
+  <g transform="translate(340, 50)">
+    <rect width="38" height="38" stroke="rgba(255,255,255,0.2)" fill="none"/>
+    <g transform="translate(4, 0) scale(0.62)">
+      <path d="M44 14C44 5 35 0 24 0C10 0 0 10 0 22C0 26 2 30 5 33L14 26C11 23 10 20 10 17C10 11 16 7 24 7C32 7 36 12 36 17C36 21 32 24 24 28L28 36C38 31 44 24 44 14Z" fill="url(#cyanGrad)"/>
+      <path d="M4 46C4 55 13 60 24 60C38 60 48 50 48 38C48 34 46 30 43 27L34 34C37 37 38 40 38 43C38 49 32 53 24 53C16 53 12 48 12 43C12 39 16 36 24 32L20 24C10 29 4 36 4 46Z" fill="url(#emeraldGrad)"/>
+      <circle cx="24" cy="30" r="3.5" fill="#A7F3D0"/>
+    </g>
+  </g>
+
+  <!-- Option 5 -->
+  <g transform="translate(440, 50)">
+    <rect width="38" height="38" stroke="rgba(255,255,255,0.2)" fill="none"/>
+    <g transform="translate(0, 0)">
+      <path d="M1 6L7 0.5H34L29 6.5H8L1 6Z" fill="url(#emeraldGrad)"/>
+      <path d="M1 6V17L9 21.5V11L4 6H1Z" fill="url(#emeraldGrad)"/>
+      <path d="M3 17.5L34 17.5L28 24.5L1 24.5L3 17.5Z" fill="#10B981"/>
+      <path d="M34 21V32L26 36.5V26.5L31 21H34Z" fill="url(#emeraldGrad)"/>
+      <path d="M34 32L28 37.5H1L6 31.5H27L34 32Z" fill="url(#emeraldGrad)"/>
+      <path d="M31 1.5C31 4 33.5 4 33.5 4C33.5 4 31 4 31 6.5C31 4 28.5 4 28.5 4C28.5 4 31 4 31 1.5Z" fill="url(#gleamGrad)"/>
+    </g>
+  </g>
+</svg>

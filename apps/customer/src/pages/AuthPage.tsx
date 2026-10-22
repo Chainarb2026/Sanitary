@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Shield, ArrowRight, RefreshCw, CheckCircle, Leaf, Zap, Copy, Check } from "lucide-react";
+import { Shield, ArrowRight, RefreshCw, CheckCircle, Zap, Copy, Check } from "lucide-react";
 import { useAuth } from "../hooks/useAuth.js";
+import { SanitaryMark } from "../components/SanitaryLogo.js";
 
 const LAST_DEV_OTP_KEY = "sanitary_dev_otp_hint";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -179,23 +180,24 @@ export const AuthPage: React.FC = () => {
       <div style={{ textAlign: "center" }}>
         <div
           style={{
-            width: "60px",
-            height: "60px",
-            borderRadius: "18px",
-            background: "linear-gradient(135deg, #059669 0%, #047857 100%)",
+            width: "64px",
+            height: "64px",
+            borderRadius: "20px",
+            background: "linear-gradient(135deg, rgba(6, 9, 17, 0.95) 0%, rgba(11, 17, 32, 0.9) 100%)",
+            border: "1.5px solid rgba(56, 189, 248, 0.3)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            margin: "0 auto 14px",
-            boxShadow: "0 8px 24px rgba(5, 150, 105, 0.3)",
+            margin: "0 auto 16px",
+            boxShadow: "0 8px 30px rgba(56, 189, 248, 0.25)",
           }}
         >
-          <Leaf size={32} color="#ffffff" />
+          <SanitaryMark size={40} />
         </div>
-        <h1 style={{ fontSize: "24px", fontWeight: 800, margin: "0 0 6px 0", color: "#0f172a" }}>
+        <h1 style={{ fontSize: "24px", fontWeight: 800, margin: "0 0 6px 0", color: "var(--text-primary)" }}>
           {step === "phone" ? "Enter Mobile Number" : "Verify Phone OTP"}
         </h1>
-        <p style={{ fontSize: "14px", color: "#64748b", margin: 0, lineHeight: 1.5 }}>
+        <p style={{ fontSize: "14px", color: "var(--text-secondary)", margin: 0, lineHeight: 1.5 }}>
           {step === "phone"
             ? "Log in or sign up to schedule doorstep pickups and track partners in real-time."
             : `Enter the 6-digit code sent to +91 ${rawPhone}`}
@@ -207,7 +209,7 @@ export const AuthPage: React.FC = () => {
         style={{
           padding: "24px",
           borderRadius: "20px",
-          border: "1px solid rgba(5, 150, 105, 0.22)",
+          border: "1px solid rgba(56, 189, 248, 0.22)",
           background:
             "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 253, 250, 0.94) 100%), url('/uber-doorstep-pickup.jpg') center/cover no-repeat",
           boxShadow: "0 16px 40px -4px rgba(15, 23, 42, 0.08)",
@@ -242,7 +244,7 @@ export const AuthPage: React.FC = () => {
         {step === "phone" ? (
           <form onSubmit={handleSendOtp} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
             <div className="input-group">
-              <label className="input-label" style={{ fontWeight: 800, color: "#0f172a" }}>
+              <label className="input-label" style={{ fontWeight: 800, color: "var(--text-primary)" }}>
                 Mobile Number
               </label>
               <div style={{ position: "relative" }}>
@@ -254,7 +256,7 @@ export const AuthPage: React.FC = () => {
                     transform: "translateY(-50%)",
                     fontWeight: 800,
                     fontSize: "15px",
-                    color: "#059669",
+                    color: "var(--color-brand)",
                   }}
                 >
                   +91
@@ -270,9 +272,9 @@ export const AuthPage: React.FC = () => {
                     paddingLeft: "52px",
                     fontSize: "16px",
                     fontWeight: 700,
-                    background: "#ffffff",
-                    borderColor: "#cbd5e1",
-                    color: "#0f172a",
+                    background: "var(--bg-secondary)",
+                    borderColor: "var(--border-subtle)",
+                    color: "var(--text-primary)",
                   }}
                   value={rawPhone}
                   onChange={(e) => setRawPhone(e.target.value)}
@@ -288,8 +290,8 @@ export const AuthPage: React.FC = () => {
                 padding: "14px",
                 fontSize: "15px",
                 fontWeight: 800,
-                background: "linear-gradient(135deg, #059669 0%, #047857 100%)",
-                boxShadow: "0 4px 14px rgba(5, 150, 105, 0.35)",
+                background: "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)",
+                boxShadow: "0 4px 14px rgba(56, 189, 248, 0.35)",
               }}
             >
               {isLoading ? "Generating OTP..." : "Continue"} <ArrowRight size={16} />
@@ -305,7 +307,7 @@ export const AuthPage: React.FC = () => {
                   textAlign: "center",
                 }}
               >
-                <div style={{ fontSize: "11px", color: "#64748b", marginBottom: "8px", fontWeight: 700, textTransform: "uppercase" }}>
+                <div style={{ fontSize: "11px", color: "var(--text-secondary)", marginBottom: "8px", fontWeight: 700, textTransform: "uppercase" }}>
                   ⚡ Fast Demo Access (Dev Mode)
                 </div>
                 <button
@@ -317,13 +319,13 @@ export const AuthPage: React.FC = () => {
                     padding: "10px",
                     fontSize: "13px",
                     fontWeight: 800,
-                    color: "#047857",
-                    borderColor: "#a7f3d0",
-                    background: "linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%)",
-                    boxShadow: "0 2px 6px rgba(5, 150, 105, 0.1)",
+                    color: "var(--color-brand)",
+                    borderColor: "rgba(56, 189, 248, 0.35)",
+                    background: "linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(56, 189, 248, 0.04) 100%)",
+                    boxShadow: "0 2px 6px rgba(56, 189, 248, 0.15)",
                   }}
                 >
-                  <Zap size={14} color="#059669" /> 1-Click Demo Login (+91 {rawPhone})
+                  <Zap size={14} color="var(--color-brand)" /> 1-Click Demo Login (+91 {rawPhone})
                 </button>
               </div>
             )}
@@ -336,9 +338,9 @@ export const AuthPage: React.FC = () => {
                 style={{
                   padding: "16px",
                   borderRadius: "14px",
-                  background: "linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%)",
-                  border: "1.5px solid #a7f3d0",
-                  boxShadow: "0 4px 16px rgba(5, 150, 105, 0.12)",
+                  background: "linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(56, 189, 248, 0.04) 100%)",
+                  border: "1.5px solid rgba(56, 189, 248, 0.35)",
+                  boxShadow: "0 4px 16px rgba(56, 189, 248, 0.15)",
                   display: "flex",
                   flexDirection: "column",
                   gap: "10px",
@@ -346,8 +348,8 @@ export const AuthPage: React.FC = () => {
               >
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                    <Zap size={16} color="#059669" />
-                    <span style={{ fontSize: "12px", fontWeight: 800, color: "#065f46", textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                    <Zap size={16} color="var(--color-brand)" />
+                    <span style={{ fontSize: "12px", fontWeight: 800, color: "var(--color-brand)", textTransform: "uppercase", letterSpacing: "0.04em" }}>
                       Demo Mode OTP Ready
                     </span>
                   </div>
@@ -355,9 +357,9 @@ export const AuthPage: React.FC = () => {
                     style={{
                       fontSize: "11px",
                       fontWeight: 700,
-                      color: "#059669",
-                      background: "#ffffff",
-                      border: "1px solid #a7f3d0",
+                      color: "var(--color-brand)",
+                      background: "var(--bg-secondary)",
+                      border: "1px solid rgba(56, 189, 248, 0.35)",
                       padding: "2px 8px",
                       borderRadius: "9999px",
                     }}
@@ -371,15 +373,15 @@ export const AuthPage: React.FC = () => {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
-                    background: "#ffffff",
+                    background: "var(--bg-secondary)",
                     padding: "10px 14px",
                     borderRadius: "10px",
                     border: "1px solid #e2e8f0",
                   }}
                 >
                   <div>
-                    <div style={{ fontSize: "11px", color: "#64748b", fontWeight: 600 }}>Active Test Code:</div>
-                    <div style={{ fontSize: "24px", fontWeight: 900, color: "#064e3b", letterSpacing: "4px", fontFamily: "monospace" }}>
+                    <div style={{ fontSize: "11px", color: "var(--text-secondary)", fontWeight: 600 }}>Active Test Code:</div>
+                    <div style={{ fontSize: "24px", fontWeight: 900, color: "var(--text-primary)", letterSpacing: "4px", fontFamily: "monospace" }}>
                       {devOtpHint}
                     </div>
                   </div>
@@ -390,7 +392,7 @@ export const AuthPage: React.FC = () => {
                       onClick={() => handleCopyOtp(devOtpHint)}
                       title="Copy OTP"
                       style={{
-                        background: "#f8fafc",
+                        background: "var(--bg-secondary)",
                         border: "1px solid #cbd5e1",
                         borderRadius: "8px",
                         padding: "8px 10px",
@@ -403,7 +405,7 @@ export const AuthPage: React.FC = () => {
                         gap: "4px",
                       }}
                     >
-                      {copiedOtp ? <Check size={14} color="#059669" /> : <Copy size={14} />}
+                      {copiedOtp ? <Check size={14} color="var(--color-brand)" /> : <Copy size={14} />}
                       <span>{copiedOtp ? "Copied" : "Copy"}</span>
                     </button>
 
@@ -414,7 +416,7 @@ export const AuthPage: React.FC = () => {
                       style={{
                         padding: "8px 14px",
                         borderRadius: "8px",
-                        background: "linear-gradient(135deg, #059669 0%, #047857 100%)",
+                        background: "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)",
                         color: "#ffffff",
                         border: "none",
                         fontSize: "12px",
@@ -423,7 +425,7 @@ export const AuthPage: React.FC = () => {
                         display: "flex",
                         alignItems: "center",
                         gap: "6px",
-                        boxShadow: "0 2px 8px rgba(5, 150, 105, 0.3)",
+                        boxShadow: "0 2px 8px rgba(56, 189, 248, 0.35)",
                       }}
                     >
                       <Zap size={14} /> Auto-Fill & Sign In
@@ -431,7 +433,7 @@ export const AuthPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: "11px", color: "#065f46" }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: "11px", color: "var(--color-brand)" }}>
                   <span>💡 Dev test code generated from API</span>
                   <button
                     type="button"
@@ -440,7 +442,7 @@ export const AuthPage: React.FC = () => {
                     style={{
                       background: "none",
                       border: "none",
-                      color: "#059669",
+                      color: "var(--color-brand)",
                       fontWeight: 700,
                       cursor: "pointer",
                       textDecoration: "underline",
@@ -458,7 +460,7 @@ export const AuthPage: React.FC = () => {
                   padding: "16px",
                   borderRadius: "14px",
                   background: "linear-gradient(135deg, rgba(5, 150, 105, 0.08) 0%, rgba(16, 185, 129, 0.04) 100%)",
-                  border: "1px solid rgba(5, 150, 105, 0.25)",
+                  border: "1px solid rgba(56, 189, 248, 0.25)",
                   display: "flex",
                   alignItems: "center",
                   gap: "14px",
@@ -469,19 +471,19 @@ export const AuthPage: React.FC = () => {
                     width: "42px",
                     height: "42px",
                     borderRadius: "12px",
-                    background: "linear-gradient(135deg, #059669 0%, #047857 100%)",
+                    background: "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     color: "#ffffff",
                     flexShrink: 0,
-                    boxShadow: "0 2px 8px rgba(5, 150, 105, 0.25)",
+                    boxShadow: "0 2px 8px rgba(56, 189, 248, 0.25)",
                   }}
                 >
                   <Shield size={20} />
                 </div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: "14px", fontWeight: 800, color: "#064e3b" }}>
+                  <div style={{ fontSize: "14px", fontWeight: 800, color: "var(--text-primary)" }}>
                     SMS Verification Code Dispatched
                   </div>
                   <div style={{ fontSize: "12px", color: "#475569", marginTop: "2px", lineHeight: 1.4 }}>
@@ -494,10 +496,10 @@ export const AuthPage: React.FC = () => {
             {/* OTP Input Field */}
             <div className="input-group">
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
-                <label className="input-label" style={{ fontWeight: 800, color: "#0f172a", margin: 0 }}>
+                <label className="input-label" style={{ fontWeight: 800, color: "var(--text-primary)", margin: 0 }}>
                   6-Digit Verification Code
                 </label>
-                <span style={{ fontSize: "11px", color: otp.length === 6 ? "#059669" : "#64748b", fontWeight: 700 }}>
+                <span style={{ fontSize: "11px", color: otp.length === 6 ? "var(--color-brand)" : "#64748b", fontWeight: 700 }}>
                   {otp.length}/6 digits entered
                 </span>
               </div>
@@ -514,10 +516,10 @@ export const AuthPage: React.FC = () => {
                   textAlign: "center",
                   fontWeight: 900,
                   fontFamily: "monospace",
-                  background: "#ffffff",
-                  borderColor: otp.length === 6 ? "#059669" : "#cbd5e1",
-                  color: "#0f172a",
-                  boxShadow: otp.length === 6 ? "0 0 0 3px rgba(5, 150, 105, 0.2)" : "none",
+                  background: "var(--bg-secondary)",
+                  borderColor: otp.length === 6 ? "var(--color-brand)" : "#cbd5e1",
+                  color: "var(--text-primary)",
+                  boxShadow: otp.length === 6 ? "0 0 0 3px rgba(56, 189, 248, 0.25)" : "none",
                 }}
                 value={otp}
                 onChange={(e) => setOtp(e.target.value.replace(/\D/g, ""))}
@@ -535,9 +537,9 @@ export const AuthPage: React.FC = () => {
                 fontWeight: 800,
                 background:
                   otp.length === 6
-                    ? "linear-gradient(135deg, #059669 0%, #047857 100%)"
+                    ? "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)"
                     : "#94a3b8",
-                boxShadow: otp.length === 6 ? "0 4px 16px rgba(5, 150, 105, 0.35)" : "none",
+                boxShadow: otp.length === 6 ? "0 4px 16px rgba(56, 189, 248, 0.35)" : "none",
                 cursor: otp.length === 6 ? "pointer" : "not-allowed",
               }}
             >
@@ -564,7 +566,7 @@ export const AuthPage: React.FC = () => {
                 style={{
                   background: "transparent",
                   border: "none",
-                  color: "#64748b",
+                  color: "var(--text-secondary)",
                   fontWeight: 700,
                   cursor: "pointer",
                 }}
@@ -573,7 +575,7 @@ export const AuthPage: React.FC = () => {
               </button>
 
               {countdown > 0 ? (
-                <span style={{ color: "#64748b", fontSize: "12px" }}>Resend in {countdown}s</span>
+                <span style={{ color: "var(--text-secondary)", fontSize: "12px" }}>Resend in {countdown}s</span>
               ) : (
                 <button
                   type="button"
@@ -582,7 +584,7 @@ export const AuthPage: React.FC = () => {
                   style={{
                     background: "transparent",
                     border: "none",
-                    color: "#059669",
+                    color: "var(--color-brand)",
                     cursor: "pointer",
                     display: "flex",
                     alignItems: "center",
@@ -605,10 +607,10 @@ export const AuthPage: React.FC = () => {
           justifyContent: "center",
           gap: "8px",
           fontSize: "12px",
-          color: "#64748b",
+          color: "var(--text-secondary)",
         }}
       >
-        <Shield size={14} color="#059669" />
+        <Shield size={14} color="var(--color-brand)" />
         <span>End-to-end encrypted phone authentication. Zero passwords.</span>
       </div>
     </div>

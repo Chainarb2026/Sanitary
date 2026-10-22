@@ -4,6 +4,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { Clock, MapPin, Calendar, CheckCircle2 } from "lucide-react";
 import { getBookings, type Booking } from "../api/bookings.js";
 import { useAuth } from "../hooks/useAuth.js";
+import { SanitaryMark } from "../components/SanitaryLogo.js";
 import { Skeleton } from "../components/Skeleton.js";
 
 export const HistoryPage: React.FC = () => {
@@ -70,12 +71,61 @@ export const HistoryPage: React.FC = () => {
         gap: "20px",
       }}
     >
-      {/* Page Title */}
+      {/* Page Title & Telemetry Header */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <h1 style={{ fontSize: "20px" }}>Pickup Activity</h1>
-        <span style={{ fontSize: "12px", color: "var(--text-muted)", fontWeight: 600 }}>
-          {allBookings.length} Total Pickups
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <SanitaryMark size={28} />
+          <div>
+            <h1 style={{ fontSize: "20px", fontWeight: 800, margin: 0 }}>Pickup Activity & Impact</h1>
+            <div style={{ fontSize: "11px", color: "var(--color-brand)", fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase" }}>
+              Verified Doorstep Chain of Custody
+            </div>
+          </div>
+        </div>
+        <span style={{ fontSize: "12px", color: "var(--text-muted)", fontWeight: 700, background: "rgba(56, 189, 248, 0.1)", border: "1px solid rgba(56, 189, 248, 0.25)", padding: "4px 10px", borderRadius: "9999px" }}>
+          {allBookings.length} Pickups Logged
         </span>
+      </div>
+
+      {/* Environmental Telemetry HUD Banner */}
+      <div
+        className="glass-card"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
+          gap: "14px",
+          padding: "16px 20px",
+          borderRadius: "18px",
+          border: "1px solid rgba(56, 189, 248, 0.22)",
+          background: "linear-gradient(135deg, rgba(6, 9, 17, 0.95) 0%, rgba(11, 17, 32, 0.9) 100%)",
+        }}
+      >
+        <div>
+          <div style={{ fontSize: "11px", color: "var(--text-muted)", fontWeight: 600, textTransform: "uppercase" }}>
+            Total Waste Recycled
+          </div>
+          <div style={{ fontSize: "22px", fontWeight: 900, color: "var(--color-brand)", fontFamily: "var(--font-display)" }}>
+            {allBookings.reduce((acc, b) => acc + (b.items?.reduce((s, it) => s + (it.estimatedWeightKg || 5), 0) || 5), 0)} kg
+          </div>
+        </div>
+
+        <div>
+          <div style={{ fontSize: "11px", color: "var(--text-muted)", fontWeight: 600, textTransform: "uppercase" }}>
+            Estimated CO₂e Saved
+          </div>
+          <div style={{ fontSize: "22px", fontWeight: 900, color: "#38bdf8", fontFamily: "var(--font-display)" }}>
+            {(allBookings.reduce((acc, b) => acc + (b.items?.reduce((s, it) => s + (it.estimatedWeightKg || 5), 0) || 5), 0) * 1.85).toFixed(1)} kg
+          </div>
+        </div>
+
+        <div>
+          <div style={{ fontSize: "11px", color: "var(--text-muted)", fontWeight: 600, textTransform: "uppercase" }}>
+            Landfill Diversion Rate
+          </div>
+          <div style={{ fontSize: "22px", fontWeight: 900, color: "#38bdf8", fontFamily: "var(--font-display)" }}>
+            100.0%
+          </div>
+        </div>
       </div>
 
       {/* Filter Chips */}
@@ -95,10 +145,10 @@ export const HistoryPage: React.FC = () => {
               borderRadius: "var(--radius-full)",
               border:
                 statusFilter === f.key
-                  ? "1px solid var(--color-teal)"
+                  ? "1px solid var(--color-brand)"
                   : "1px solid var(--border-subtle)",
-              background: statusFilter === f.key ? "rgba(20, 184, 166, 0.15)" : "transparent",
-              color: statusFilter === f.key ? "var(--color-teal)" : "var(--text-secondary)",
+              background: statusFilter === f.key ? "rgba(56, 189, 248, 0.15)" : "transparent",
+              color: statusFilter === f.key ? "var(--color-brand)" : "var(--text-secondary)",
               fontSize: "12px",
               fontWeight: 600,
               cursor: "pointer",
@@ -149,7 +199,7 @@ export const HistoryPage: React.FC = () => {
                     display: "flex",
                     flexDirection: "column",
                     gap: "10px",
-                    borderColor: isActive ? "rgba(20, 184, 166, 0.4)" : "var(--border-subtle)",
+                    borderColor: isActive ? "rgba(56, 189, 248, 0.45)" : "var(--border-subtle)",
                   }}
                 >
                   <div
@@ -160,7 +210,7 @@ export const HistoryPage: React.FC = () => {
                     }}
                   >
                     <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                      <Calendar size={14} color="var(--color-teal)" />
+                      <Calendar size={14} color="var(--color-brand)" />
                       <span
                         style={{ fontSize: "12px", color: "var(--text-muted)", fontWeight: 600 }}
                       >
@@ -173,7 +223,7 @@ export const HistoryPage: React.FC = () => {
                           ? "badge-emerald"
                           : booking.status === "CANCELLED"
                             ? "badge-rose"
-                            : "badge-teal"
+                            : "badge-brand"
                       }`}
                     >
                       {booking.status}
@@ -238,7 +288,7 @@ export const HistoryPage: React.FC = () => {
                     }}
                   >
                     <span style={{ color: "var(--text-muted)" }}>Total Paid</span>
-                    <strong style={{ color: "var(--color-teal)", fontSize: "15px" }}>
+                    <strong style={{ color: "var(--color-brand)", fontSize: "15px" }}>
                       ₹{booking.quote ? (booking.quote.total / 100).toFixed(0) : "0"}
                     </strong>
                   </div>

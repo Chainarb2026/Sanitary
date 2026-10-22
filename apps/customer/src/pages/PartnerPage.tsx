@@ -18,6 +18,7 @@ import {
   Zap,
 } from "lucide-react";
 import { useAuth } from "../hooks/useAuth.js";
+import { SanitaryMark } from "../components/SanitaryLogo.js";
 import { useSocket } from "../hooks/useSocket.js";
 import {
   getPartnerProfile,
@@ -325,20 +326,21 @@ export const PartnerPage: React.FC = () => {
         <div className="glass-card" style={{ padding: "36px 24px" }}>
           <div
             style={{
-              width: "64px",
-              height: "64px",
-              borderRadius: "20px",
-              background: "linear-gradient(135deg, #10b981 0%, #047857 100%)",
+              width: "72px",
+              height: "72px",
+              borderRadius: "22px",
+              background: "linear-gradient(135deg, rgba(2, 132, 199, 0.25) 0%, rgba(56, 189, 248, 0.1) 100%)",
+              border: "1px solid rgba(56, 189, 248, 0.4)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              margin: "0 auto 16px",
-              boxShadow: "0 8px 24px rgba(16, 185, 129, 0.3)",
+              margin: "0 auto 18px",
+              boxShadow: "0 0 24px rgba(56, 189, 248, 0.25)",
             }}
           >
-            <Truck size={32} color="#ffffff" />
+            <SanitaryMark size={40} />
           </div>
-          <h2 style={{ fontSize: "22px", fontWeight: 800, margin: "0 0 8px 0" }}>
+          <h2 style={{ fontSize: "22px", fontWeight: 800, margin: "0 0 8px 0", letterSpacing: "-0.02em" }}>
             Sanitary Partner Portal
           </h2>
           <p style={{ color: "var(--text-secondary)", fontSize: "14px", marginBottom: "24px", lineHeight: 1.5 }}>
@@ -367,7 +369,7 @@ export const PartnerPage: React.FC = () => {
                 width: "44px",
                 height: "44px",
                 borderRadius: "12px",
-                background: "linear-gradient(135deg, #059669 0%, #047857 100%)",
+                background: "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -444,8 +446,8 @@ export const PartnerPage: React.FC = () => {
 
             <div
               style={{
-                background: "rgba(16, 185, 129, 0.08)",
-                border: "1px solid rgba(16, 185, 129, 0.25)",
+                background: "rgba(56, 189, 248, 0.08)",
+                border: "1px solid rgba(56, 189, 248, 0.25)",
                 padding: "12px 16px",
                 borderRadius: "10px",
                 fontSize: "12px",
@@ -489,8 +491,8 @@ export const PartnerPage: React.FC = () => {
           justifyContent: "space-between",
           flexWrap: "wrap",
           gap: "16px",
-          border: isOnline ? "1.5px solid rgba(16, 185, 129, 0.5)" : "1px solid var(--border-subtle)",
-          boxShadow: isOnline ? "0 0 25px rgba(16, 185, 129, 0.15)" : "none",
+          border: isOnline ? "1.5px solid rgba(56, 189, 248, 0.5)" : "1px solid var(--border-subtle)",
+          boxShadow: isOnline ? "0 0 25px rgba(56, 189, 248, 0.2)" : "none",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
@@ -501,13 +503,13 @@ export const PartnerPage: React.FC = () => {
               height: "50px",
               borderRadius: "16px",
               background: isOnline
-                ? "linear-gradient(135deg, #10b981 0%, #047857 100%)"
+                ? "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)"
                 : "rgba(255, 255, 255, 0.08)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               color: "#ffffff",
-              boxShadow: isOnline ? "0 0 16px rgba(16, 185, 129, 0.6)" : "none",
+              boxShadow: isOnline ? "0 0 16px rgba(56, 189, 248, 0.6)" : "none",
             }}
           >
             <Truck size={24} />
@@ -520,7 +522,7 @@ export const PartnerPage: React.FC = () => {
                   width: "12px",
                   height: "12px",
                   borderRadius: "50%",
-                  background: "#10b981",
+                  background: "#38bdf8",
                   border: "2px solid #030712",
                 }}
               />
@@ -529,10 +531,11 @@ export const PartnerPage: React.FC = () => {
 
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <SanitaryMark size={18} />
               <h2 style={{ fontSize: "18px", fontWeight: 800, margin: 0, color: "var(--text-primary)" }}>
                 {partnerProfile?.name || "Ramesh Kumar"}
               </h2>
-              <span className="badge badge-emerald">Verified EV</span>
+              <span className="badge badge-teal">Verified EV</span>
             </div>
             <div style={{ fontSize: "12px", color: "var(--text-secondary)", marginTop: "2px", display: "flex", alignItems: "center", gap: "12px" }}>
               <span style={{ display: "flex", alignItems: "center", gap: "4px", color: "#fbbf24" }}>
@@ -550,7 +553,7 @@ export const PartnerPage: React.FC = () => {
             <div style={{ fontSize: "11px", fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase" }}>
               Wallet Balance
             </div>
-            <div style={{ fontSize: "20px", fontWeight: 800, color: "#059669", fontFamily: "var(--font-display)" }}>
+            <div style={{ fontSize: "20px", fontWeight: 800, color: "var(--color-brand)", fontFamily: "var(--font-display)" }}>
               ₹{walletRs}
             </div>
           </div>
@@ -562,7 +565,7 @@ export const PartnerPage: React.FC = () => {
             style={{
               padding: "10px 18px",
               borderRadius: "var(--radius-full)",
-              background: isOnline ? "linear-gradient(135deg, #059669 0%, #047857 100%)" : "var(--bg-secondary)",
+              background: isOnline ? "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)" : "var(--bg-secondary)",
               border: isOnline ? "none" : "1px solid var(--border-medium)",
               color: isOnline ? "#ffffff" : "var(--text-primary)",
               fontSize: "13px",
@@ -597,7 +600,7 @@ export const PartnerPage: React.FC = () => {
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <Radio size={16} color="#059669" />
+            <Radio size={16} color="var(--color-brand)" />
             <span style={{ color: "#065f46", fontWeight: 700 }}>{gpsStatus}</span>
             <span style={{ color: "#047857" }}>({gpsCoords.lat.toFixed(4)}, {gpsCoords.lng.toFixed(4)})</span>
           </div>
@@ -619,7 +622,7 @@ export const PartnerPage: React.FC = () => {
               boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
             }}
           >
-            <Zap size={12} color="#059669" /> Test Offer Chime
+            <Zap size={12} color="var(--color-brand)" /> Test Offer Chime
           </button>
         </div>
       )}
@@ -629,7 +632,7 @@ export const PartnerPage: React.FC = () => {
         <div
           className="glass-card"
           style={{
-            border: "2px solid #059669",
+            border: "2px solid var(--color-brand)",
             background: "linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%)",
             borderRadius: "20px",
             padding: "24px",
@@ -641,7 +644,7 @@ export const PartnerPage: React.FC = () => {
         >
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <Sparkles size={20} color="#059669" />
+              <Sparkles size={20} color="var(--color-brand)" />
               <span style={{ fontSize: "15px", fontWeight: 800, color: "#064e3b", textTransform: "uppercase" }}>
                 New Doorstep Pickup Offer!
               </span>
@@ -680,13 +683,13 @@ export const PartnerPage: React.FC = () => {
           >
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: "6px", color: "#64748b", fontSize: "12px" }}>
-                <MapPin size={14} color="#059669" />
+                <MapPin size={14} color="var(--color-brand)" />
                 <span>Customer Doorstep Location:</span>
               </div>
               <div style={{ fontSize: "15px", fontWeight: 700, color: "#0f172a", marginTop: "4px" }}>
                 {incomingOffer.address?.street}, {incomingOffer.address?.city}
               </div>
-              <div style={{ fontSize: "12px", color: "#059669", marginTop: "2px", fontWeight: 600 }}>
+              <div style={{ fontSize: "12px", color: "var(--color-brand)", marginTop: "2px", fontWeight: 600 }}>
                 ~1.4 km away (Est. 5 min drive)
               </div>
             </div>
@@ -695,7 +698,7 @@ export const PartnerPage: React.FC = () => {
               <div style={{ fontSize: "11px", color: "#64748b", textTransform: "uppercase", fontWeight: 700 }}>
                 You Earn
               </div>
-              <div style={{ fontSize: "28px", fontWeight: 900, color: "#059669", fontFamily: "var(--font-display)" }}>
+              <div style={{ fontSize: "28px", fontWeight: 900, color: "var(--color-brand)", fontFamily: "var(--font-display)" }}>
                 ₹{(incomingOffer.quote.partnerEarning / 100).toFixed(0)}
               </div>
             </div>
@@ -719,7 +722,7 @@ export const PartnerPage: React.FC = () => {
                 padding: "14px",
                 fontWeight: 800,
                 fontSize: "15px",
-                background: "linear-gradient(135deg, #059669 0%, #047857 100%)",
+                background: "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)",
                 boxShadow: "0 4px 14px rgba(5, 150, 105, 0.35)",
               }}
             >
@@ -759,7 +762,7 @@ export const PartnerPage: React.FC = () => {
               className="btn btn-secondary"
               style={{ padding: "8px 14px", fontSize: "12px", display: "flex", alignItems: "center", gap: "6px" }}
             >
-              <Navigation size={14} color="#059669" /> Open Maps <ExternalLink size={12} />
+              <Navigation size={14} color="var(--color-brand)" /> Open Maps <ExternalLink size={12} />
             </a>
           </div>
 
@@ -795,7 +798,7 @@ export const PartnerPage: React.FC = () => {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    color: "#059669",
+                    color: "var(--color-brand)",
                   }}
                 >
                   <Phone size={18} />
@@ -811,7 +814,7 @@ export const PartnerPage: React.FC = () => {
                   padding: "16px",
                   fontSize: "16px",
                   fontWeight: 800,
-                  background: "linear-gradient(135deg, #059669 0%, #047857 100%)",
+                  background: "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)",
                   boxShadow: "0 4px 14px rgba(5, 150, 105, 0.35)",
                 }}
               >
@@ -874,7 +877,7 @@ export const PartnerPage: React.FC = () => {
                 disabled={actionLoading || pickupOtpInput.length !== 6}
                 className="btn btn-primary btn-block btn-lg"
                 style={{
-                  background: "linear-gradient(135deg, #059669 0%, #047857 100%)",
+                  background: "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)",
                   boxShadow: "0 4px 14px rgba(5, 150, 105, 0.35)",
                 }}
               >
@@ -932,7 +935,7 @@ export const PartnerPage: React.FC = () => {
                   padding: "16px",
                   fontSize: "16px",
                   fontWeight: 800,
-                  background: "linear-gradient(135deg, #059669 0%, #047857 100%)",
+                  background: "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)",
                   boxShadow: "0 4px 14px rgba(5, 150, 105, 0.35)",
                 }}
               >

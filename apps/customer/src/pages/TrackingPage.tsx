@@ -6,6 +6,7 @@ import { getBookingById, cancelBooking, type BookingStatus } from "../api/bookin
 import { useSocket } from "../hooks/useSocket.js";
 import { useAuth } from "../hooks/useAuth.js";
 import { DirectionMapTracker } from "../components/DirectionMapTracker.js";
+import { SanitaryMark } from "../components/SanitaryLogo.js";
 import { PaymentView } from "../components/PaymentView.js";
 
 const STATUS_PROGRESS: BookingStatus[] = [
@@ -184,29 +185,32 @@ export const TrackingPage: React.FC = () => {
 
         {/* Top row: booking ID + status badge + Cancel pill */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "12px" }}>
-          <div style={{ flex: 1 }}>
-            <span
-              style={{
-                fontSize: "11px",
-                fontWeight: 700,
-                color: "var(--text-muted)",
-                letterSpacing: "0.05em",
-              }}
-            >
-              BOOKING #{booking._id.slice(-6).toUpperCase()}
-            </span>
-            <h2 style={{ fontSize: "18px", marginTop: "4px", lineHeight: 1.3 }}>
-              {currentStatus === "SEARCHING" && "Searching for Nearby Partner..."}
-              {currentStatus === "ASSIGNED" && "Partner Assigned! Heading Your Way"}
-              {currentStatus === "EN_ROUTE" && "Partner is En Route to Your Address"}
-              {currentStatus === "ARRIVED" && "Partner Has Arrived at Doorstep!"}
-              {currentStatus === "OTP_VERIFIED" && "OTP Verified • Waste Handover"}
-              {currentStatus === "COLLECTED" && "Waste Loaded • Ready for Payment"}
-              {currentStatus === "PAID" && "Payment Successful"}
-              {currentStatus === "COMPLETED" && "Pickup Completed & Recycled"}
-              {currentStatus === "CANCELLED" && "Booking Cancelled"}
-              {currentStatus === "NO_PARTNER" && "No Partner Available — Try Again"}
-            </h2>
+          <div style={{ display: "flex", alignItems: "center", gap: "10px", flex: 1 }}>
+            <SanitaryMark size={28} />
+            <div style={{ flex: 1 }}>
+              <span
+                style={{
+                  fontSize: "11px",
+                  fontWeight: 700,
+                  color: "var(--text-muted)",
+                  letterSpacing: "0.05em",
+                }}
+              >
+                BOOKING #{booking._id.slice(-6).toUpperCase()}
+              </span>
+              <h2 style={{ fontSize: "18px", marginTop: "4px", lineHeight: 1.3 }}>
+                {currentStatus === "SEARCHING" && "Searching for Nearby Partner..."}
+                {currentStatus === "ASSIGNED" && "Partner Assigned! Heading Your Way"}
+                {currentStatus === "EN_ROUTE" && "Partner is En Route to Your Address"}
+                {currentStatus === "ARRIVED" && "Partner Has Arrived at Doorstep!"}
+                {currentStatus === "OTP_VERIFIED" && "OTP Verified • Waste Handover"}
+                {currentStatus === "COLLECTED" && "Waste Loaded • Ready for Payment"}
+                {currentStatus === "PAID" && "Payment Successful"}
+                {currentStatus === "COMPLETED" && "Pickup Completed & Recycled"}
+                {currentStatus === "CANCELLED" && "Booking Cancelled"}
+                {currentStatus === "NO_PARTNER" && "No Partner Available — Try Again"}
+              </h2>
+            </div>
           </div>
 
           {/* Status badge */}
@@ -240,7 +244,7 @@ export const TrackingPage: React.FC = () => {
                   height: "4px",
                   borderRadius: "var(--radius-full)",
                   background: isCurrent
-                    ? "var(--color-teal)"
+                    ? "var(--color-brand)"
                     : isCompleted
                       ? "var(--color-brand)"
                       : "rgba(100, 116, 139, 0.2)",
@@ -302,7 +306,7 @@ export const TrackingPage: React.FC = () => {
         </h4>
 
         <div style={{ display: "flex", alignItems: "flex-start", gap: "10px", fontSize: "13px" }}>
-          <MapPin size={16} color="var(--color-teal)" style={{ marginTop: "2px", flexShrink: 0 }} />
+          <MapPin size={16} color="var(--color-brand)" style={{ marginTop: "2px", flexShrink: 0 }} />
           <div>
             <strong>{booking.address.addressLine1}</strong>
             <div style={{ color: "var(--text-muted)", marginTop: "2px" }}>
@@ -312,7 +316,7 @@ export const TrackingPage: React.FC = () => {
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "13px" }}>
-          <Clock size={16} color="var(--color-teal)" style={{ flexShrink: 0 }} />
+          <Clock size={16} color="var(--color-brand)" style={{ flexShrink: 0 }} />
           <div>
             <strong>
               {booking.slot.type === "asap"
@@ -333,7 +337,7 @@ export const TrackingPage: React.FC = () => {
           }}
         >
           <span style={{ color: "var(--text-secondary)" }}>Total Fare</span>
-          <strong style={{ fontSize: "16px", color: "var(--color-teal)" }}>
+          <strong style={{ fontSize: "16px", color: "var(--color-brand)" }}>
             ₹{(booking.quote.total / 100).toFixed(0)}
           </strong>
         </div>
@@ -344,14 +348,14 @@ export const TrackingPage: React.FC = () => {
         <div
           className="glass-card"
           style={{
-            background: "linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%)",
-            border: "1.5px solid #a7f3d0",
+            background: "linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(56, 189, 248, 0.05) 100%)",
+            border: "1.5px solid rgba(56, 189, 248, 0.35)",
             padding: "16px 20px",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
             borderRadius: "16px",
-            boxShadow: "0 4px 16px rgba(5, 150, 105, 0.08)",
+            boxShadow: "0 4px 16px rgba(56, 189, 248, 0.15)",
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
@@ -365,7 +369,7 @@ export const TrackingPage: React.FC = () => {
                 alignItems: "center",
                 justifyContent: "center",
                 color: "#ffffff",
-                boxShadow: "0 0 16px rgba(5, 150, 105, 0.5)",
+                boxShadow: "0 0 16px rgba(56, 189, 248, 0.5)",
               }}
             >
               <CheckCircle size={22} />
@@ -383,11 +387,11 @@ export const TrackingPage: React.FC = () => {
             style={{
               padding: "4px 12px",
               borderRadius: "9999px",
-              background: "rgba(5, 150, 105, 0.2)",
+              background: "rgba(56, 189, 248, 0.2)",
               color: "var(--color-brand)",
               fontSize: "12px",
               fontWeight: 800,
-              border: "1px solid rgba(5, 150, 105, 0.4)",
+              border: "1px solid rgba(56, 189, 248, 0.4)",
             }}
           >
             PAID
@@ -554,7 +558,7 @@ export const TrackingPage: React.FC = () => {
                   : "rgba(5, 150, 105, 0.06)",
                 border: partnerEnRoute
                   ? "1px solid rgba(251, 191, 36, 0.35)"
-                  : "1px solid rgba(5, 150, 105, 0.2)",
+                  : "1px solid rgba(56, 189, 248, 0.2)",
                 fontSize: "13px",
                 fontWeight: 700,
                 color: partnerEnRoute ? "#b45309" : "#047857",

@@ -257,6 +257,21 @@ export const Header: React.FC = () => {
             </Link>
 
             <a
+              href="#services-marketplace"
+              onClick={(e) => {
+                if (location.pathname === "/") {
+                  e.preventDefault();
+                  document.getElementById("services-marketplace")?.scrollIntoView({ behavior: "smooth" });
+                } else {
+                  navigate("/#services-marketplace");
+                }
+              }}
+              className={`nav-link ${location.hash === "#services-marketplace" ? "active" : ""}`}
+            >
+              Services
+            </a>
+
+            <a
               href="#flat-pricing"
               onClick={(e) => {
                 if (location.pathname === "/") {

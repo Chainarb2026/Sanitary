@@ -20,6 +20,7 @@ import { getWasteTypes } from "../api/wasteTypes.js";
 import { useAuth } from "../hooks/useAuth.js";
 import { SanitaryMark } from "../components/SanitaryLogo.js";
 import { UberHero } from "../components/UberHero.js";
+import { UrbanMarketplace } from "../components/UrbanMarketplace.js";
 
 // Visual styling and consumer metadata for waste catalog
 const WASTE_TYPE_META: Record<string, { icon: string; popular?: boolean; subtext?: string }> = {
@@ -190,12 +191,12 @@ export const HomePage: React.FC = () => {
           <div
             style={{
               borderRadius: "16px",
-              border: "1.5px solid #a7f3d0",
-              background: "linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%)",
+              border: "1.5px solid rgba(56, 189, 248, 0.3)",
+              background: "linear-gradient(135deg, rgba(56, 189, 248, 0.08) 0%, #f0fdf4 100%)",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              boxShadow: "0 8px 24px rgba(5, 150, 105, 0.12)",
+              boxShadow: "0 8px 24px rgba(2, 132, 199, 0.12)",
               padding: "18px 24px",
             }}
           >
@@ -205,12 +206,12 @@ export const HomePage: React.FC = () => {
                   width: "48px",
                   height: "48px",
                   borderRadius: "50%",
-                  background: "linear-gradient(135deg, #059669 0%, #047857 100%)",
+                  background: "linear-gradient(135deg, #0284c7 0%, #0369a1 100%)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   color: "#ffffff",
-                  boxShadow: "0 4px 14px rgba(5, 150, 105, 0.35)",
+                  boxShadow: "0 4px 14px rgba(2, 132, 199, 0.35)",
                 }}
               >
                 <Truck size={24} />
@@ -221,7 +222,7 @@ export const HomePage: React.FC = () => {
                     style={{
                       fontSize: "12px",
                       fontWeight: 800,
-                      color: "#047857",
+                      color: "var(--color-brand-hover)",
                       letterSpacing: "0.06em",
                       textTransform: "uppercase",
                     }}
@@ -231,8 +232,8 @@ export const HomePage: React.FC = () => {
                   <span
                     style={{
                       background: "#ffffff",
-                      border: "1px solid #a7f3d0",
-                      color: "#059669",
+                      border: "1px solid rgba(56, 189, 248, 0.3)",
+                      color: "var(--color-brand)",
                       fontSize: "11px",
                       fontWeight: 800,
                       padding: "2px 8px",
@@ -271,7 +272,12 @@ export const HomePage: React.FC = () => {
       {/* 1. HERO SECTION: "Request a pickup" with Grand Transparent Image Slider */}
       <UberHero />
 
-      {/* 2. FLAT-FEE TRANSPARENT PRICING CALCULATOR (LIGHT, CLEAN, CONSUMER-FRIENDLY) */}
+      {/* 2. URBAN COMPANY STYLE MASTER SERVICE MARKETPLACE SHOWCASE */}
+      <section id="services-marketplace" style={{ scrollMarginTop: "90px" }}>
+        <UrbanMarketplace />
+      </section>
+
+      {/* 3. FLAT-FEE TRANSPARENT PRICING CALCULATOR (LIGHT, CLEAN, CONSUMER-FRIENDLY) */}
       <section id="flat-pricing" style={{ scrollMarginTop: "90px" }}>
         <div
           style={{
@@ -293,9 +299,9 @@ export const HomePage: React.FC = () => {
             >
               <span
                 style={{
-                  background: "#ecfdf5",
-                  border: "1px solid #a7f3d0",
-                  color: "#047857",
+                  background: "rgba(56, 189, 248, 0.08)",
+                  border: "1px solid rgba(56, 189, 248, 0.3)",
+                  color: "var(--color-brand-hover)",
                   fontSize: "12px",
                   fontWeight: 800,
                   padding: "4px 12px",
@@ -305,7 +311,7 @@ export const HomePage: React.FC = () => {
                   gap: "6px",
                 }}
               >
-                <Check size={13} color="#059669" /> Transparent Flat-Fee Calculator
+                <Check size={13} color="var(--color-brand)" /> Transparent Flat-Fee Calculator
               </span>
             </div>
             <h2 style={{ fontSize: "28px", fontWeight: 800, color: "#0f172a", marginBottom: "8px", letterSpacing: "-0.02em" }}>
@@ -335,14 +341,14 @@ export const HomePage: React.FC = () => {
                     key={item.slug}
                     style={{
                       background: isSelected ? "#f0fdf4" : "#ffffff",
-                      border: isSelected ? "1.5px solid #059669" : "1px solid #e2e8f0",
+                      border: isSelected ? "1.5px solid var(--color-brand)" : "1px solid #e2e8f0",
                       borderRadius: "14px",
                       padding: "14px 18px",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "space-between",
                       transition: "all 0.15s ease",
-                      boxShadow: isSelected ? "0 4px 12px rgba(5, 150, 105, 0.08)" : "none",
+                      boxShadow: isSelected ? "0 4px 12px rgba(2, 132, 199, 0.08)" : "none",
                     }}
                   >
                     <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
@@ -356,9 +362,9 @@ export const HomePage: React.FC = () => {
                             style={{
                               fontSize: "12px",
                               fontWeight: 800,
-                              color: "#047857",
-                              background: "#ecfdf5",
-                              border: "1px solid #a7f3d0",
+                              color: "var(--color-brand-hover)",
+                              background: "rgba(56, 189, 248, 0.08)",
+                              border: "1px solid rgba(56, 189, 248, 0.3)",
                               padding: "2px 8px",
                               borderRadius: "9999px",
                             }}
@@ -408,7 +414,7 @@ export const HomePage: React.FC = () => {
                           textAlign: "center",
                           fontSize: "16px",
                           fontWeight: 800,
-                          color: isSelected ? "#059669" : "#64748b",
+                          color: isSelected ? "var(--color-brand)" : "#64748b",
                         }}
                       >
                         {qty}
@@ -423,13 +429,13 @@ export const HomePage: React.FC = () => {
                           height: "32px",
                           borderRadius: "8px",
                           border: "none",
-                          background: "#059669",
+                          background: "var(--color-brand)",
                           color: "#ffffff",
                           cursor: "pointer",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
-                          boxShadow: "0 2px 6px rgba(5, 150, 105, 0.3)",
+                          boxShadow: "0 2px 6px rgba(2, 132, 199, 0.3)",
                           transition: "all 0.15s ease",
                         }}
                       >
@@ -448,9 +454,9 @@ export const HomePage: React.FC = () => {
                 top: "100px",
                 padding: "26px",
                 background: "linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%)",
-                border: "1.5px solid #a7f3d0",
+                border: "1.5px solid rgba(56, 189, 248, 0.3)",
                 borderRadius: "20px",
-                boxShadow: "0 10px 25px -5px rgba(5, 150, 105, 0.1)",
+                boxShadow: "0 10px 25px -5px rgba(2, 132, 199, 0.1)",
                 display: "flex",
                 flexDirection: "column",
                 gap: "18px",
@@ -470,7 +476,7 @@ export const HomePage: React.FC = () => {
                     style={{
                       fontSize: "11px",
                       fontWeight: 800,
-                      color: "#059669",
+                      color: "var(--color-brand)",
                       textTransform: "uppercase",
                       letterSpacing: "0.06em",
                     }}
@@ -482,7 +488,7 @@ export const HomePage: React.FC = () => {
                   </div>
                 </div>
 
-                <SanitaryMark size={20} color="#059669" />
+                <SanitaryMark size={20} color="var(--color-brand)" />
               </div>
 
               {/* Selected Items Breakdown */}
@@ -524,7 +530,7 @@ export const HomePage: React.FC = () => {
                   }}
                 >
                   <span>Doorstep Handling & Vehicle Dispatch:</span>
-                  <span style={{ color: "#059669", fontWeight: 700 }}>FREE (₹0)</span>
+                  <span style={{ color: "var(--color-brand)", fontWeight: 700 }}>FREE (₹0)</span>
                 </div>
 
                 <div
@@ -552,7 +558,7 @@ export const HomePage: React.FC = () => {
                       fontSize: "34px",
                       fontWeight: 900,
                       fontFamily: "var(--font-display)",
-                      color: "#059669",
+                      color: "var(--color-brand)",
                     }}
                   >
                     ₹{calculatedTotal.total}
@@ -569,8 +575,8 @@ export const HomePage: React.FC = () => {
                   padding: "16px",
                   fontSize: "15px",
                   fontWeight: 800,
-                  background: "linear-gradient(135deg, #059669 0%, #047857 100%)",
-                  boxShadow: "0 4px 16px rgba(5, 150, 105, 0.35)",
+                  background: "linear-gradient(135deg, #0284c7 0%, #0369a1 100%)",
+                  boxShadow: "0 4px 16px rgba(2, 132, 199, 0.35)",
                 }}
               >
                 Schedule This Pickup <ArrowRight size={16} />
@@ -587,7 +593,7 @@ export const HomePage: React.FC = () => {
                   gap: "6px",
                 }}
               >
-                <ShieldCheck size={14} color="#059669" />
+                <ShieldCheck size={14} color="var(--color-brand)" />
                 <span>Zero-loss double-entry receipt issued via UPI QR / Cash</span>
               </div>
             </div>
@@ -608,9 +614,9 @@ export const HomePage: React.FC = () => {
           >
             <span
               style={{
-                background: "#ecfdf5",
-                border: "1px solid #a7f3d0",
-                color: "#047857",
+                background: "rgba(56, 189, 248, 0.08)",
+                border: "1px solid rgba(56, 189, 248, 0.3)",
+                color: "var(--color-brand-hover)",
                 fontSize: "12px",
                 fontWeight: 800,
                 padding: "4px 12px",
@@ -620,7 +626,7 @@ export const HomePage: React.FC = () => {
                 gap: "6px",
               }}
             >
-              <Sparkles size={12} color="#059669" /> Doorstep Collection Made Effortless
+              <Sparkles size={12} color="var(--color-brand)" /> Doorstep Collection Made Effortless
             </span>
           </div>
           <h2 style={{ fontSize: "32px", fontWeight: 800, color: "#0f172a", marginBottom: "10px", letterSpacing: "-0.02em" }}>
@@ -656,12 +662,12 @@ export const HomePage: React.FC = () => {
                 width: "48px",
                 height: "48px",
                 borderRadius: "14px",
-                background: "#ecfdf5",
-                border: "1px solid #a7f3d0",
+                background: "rgba(56, 189, 248, 0.08)",
+                border: "1px solid rgba(56, 189, 248, 0.3)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                color: "#059669",
+                color: "var(--color-brand)",
                 fontSize: "20px",
                 fontWeight: 800,
               }}
@@ -695,11 +701,11 @@ export const HomePage: React.FC = () => {
                 height: "48px",
                 borderRadius: "14px",
                 background: "#f0fdf4",
-                border: "1px solid #a7f3d0",
+                border: "1px solid rgba(56, 189, 248, 0.3)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                color: "#059669",
+                color: "var(--color-brand)",
                 fontSize: "20px",
                 fontWeight: 800,
               }}
@@ -732,12 +738,12 @@ export const HomePage: React.FC = () => {
                 width: "48px",
                 height: "48px",
                 borderRadius: "14px",
-                background: "#ecfdf5",
-                border: "1px solid #a7f3d0",
+                background: "rgba(56, 189, 248, 0.08)",
+                border: "1px solid rgba(56, 189, 248, 0.3)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                color: "#059669",
+                color: "var(--color-brand)",
                 fontSize: "20px",
                 fontWeight: 800,
               }}
@@ -767,9 +773,9 @@ export const HomePage: React.FC = () => {
           >
             <span
               style={{
-                background: "#ecfdf5",
-                border: "1px solid #a7f3d0",
-                color: "#047857",
+                background: "rgba(56, 189, 248, 0.08)",
+                border: "1px solid rgba(56, 189, 248, 0.3)",
+                color: "var(--color-brand-hover)",
                 fontSize: "12px",
                 fontWeight: 800,
                 padding: "4px 12px",
@@ -779,7 +785,7 @@ export const HomePage: React.FC = () => {
                 gap: "6px",
               }}
             >
-              <MapPin size={12} color="#059669" /> Rapid Doorstep Coverage
+              <MapPin size={12} color="var(--color-brand)" /> Rapid Doorstep Coverage
             </span>
           </div>
           <h2 style={{ fontSize: "32px", fontWeight: 800, color: "#0f172a", marginBottom: "10px", letterSpacing: "-0.02em" }}>
@@ -818,16 +824,16 @@ export const HomePage: React.FC = () => {
                   style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}
                 >
                   <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                    <MapPin size={18} color="#059669" />
+                    <MapPin size={18} color="var(--color-brand)" />
                     <strong style={{ fontSize: "17px", color: "#0f172a", fontWeight: 800 }}>{c.name}</strong>
                   </div>
                   <span
                     style={{
                       fontSize: "11px",
                       fontWeight: 700,
-                      color: "#047857",
-                      background: "#ecfdf5",
-                      border: "1px solid #a7f3d0",
+                      color: "var(--color-brand-hover)",
+                      background: "rgba(56, 189, 248, 0.08)",
+                      border: "1px solid rgba(56, 189, 248, 0.3)",
                       padding: "3px 8px",
                       borderRadius: "9999px",
                     }}
@@ -839,7 +845,7 @@ export const HomePage: React.FC = () => {
                 <div
                   style={{
                     fontSize: "13px",
-                    color: "#059669",
+                    color: "var(--color-brand)",
                     fontWeight: 700,
                     marginTop: "6px",
                   }}
@@ -865,7 +871,7 @@ export const HomePage: React.FC = () => {
                 <span style={{ color: "#475569" }}>
                   Daily Pickup Slot: 8 AM – 8 PM
                 </span>
-                <span style={{ color: "#059669", fontWeight: 800 }}>● Live Now</span>
+                <span style={{ color: "var(--color-brand)", fontWeight: 800 }}>● Live Now</span>
               </div>
             </div>
           ))}
@@ -883,12 +889,12 @@ export const HomePage: React.FC = () => {
               marginBottom: "10px",
             }}
           >
-            <SanitaryMark size={16} color="#059669" />
+            <SanitaryMark size={16} color="var(--color-brand)" />
             <span
               style={{
                 fontSize: "12px",
                 fontWeight: 800,
-                color: "#047857",
+                color: "var(--color-brand-hover)",
                 textTransform: "uppercase",
                 letterSpacing: "0.06em",
               }}
@@ -926,12 +932,12 @@ export const HomePage: React.FC = () => {
                 width: "44px",
                 height: "44px",
                 borderRadius: "12px",
-                background: "#ecfdf5",
-                border: "1px solid #a7f3d0",
+                background: "rgba(56, 189, 248, 0.08)",
+                border: "1px solid rgba(56, 189, 248, 0.3)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                color: "#059669",
+                color: "var(--color-brand)",
                 marginBottom: "16px",
               }}
             >
@@ -960,12 +966,12 @@ export const HomePage: React.FC = () => {
                 width: "44px",
                 height: "44px",
                 borderRadius: "12px",
-                background: "#ecfdf5",
-                border: "1px solid #a7f3d0",
+                background: "rgba(56, 189, 248, 0.08)",
+                border: "1px solid rgba(56, 189, 248, 0.3)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                color: "#059669",
+                color: "var(--color-brand)",
                 marginBottom: "16px",
               }}
             >
@@ -994,12 +1000,12 @@ export const HomePage: React.FC = () => {
                 width: "44px",
                 height: "44px",
                 borderRadius: "12px",
-                background: "#ecfdf5",
-                border: "1px solid #a7f3d0",
+                background: "rgba(56, 189, 248, 0.08)",
+                border: "1px solid rgba(56, 189, 248, 0.3)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                color: "#059669",
+                color: "var(--color-brand)",
                 marginBottom: "16px",
               }}
             >
@@ -1020,10 +1026,10 @@ export const HomePage: React.FC = () => {
         <div
           style={{
             padding: "48px 36px",
-            background: "linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 50%, #eff6ff 100%)",
-            border: "1.5px solid #a7f3d0",
+            background: "linear-gradient(135deg, rgba(56, 189, 248, 0.08) 0%, #f0fdf4 50%, #eff6ff 100%)",
+            border: "1.5px solid rgba(56, 189, 248, 0.3)",
             borderRadius: "24px",
-            boxShadow: "0 16px 40px -8px rgba(5, 150, 105, 0.12)",
+            boxShadow: "0 16px 40px -8px rgba(2, 132, 199, 0.12)",
             textAlign: "center",
             display: "flex",
             flexDirection: "column",
@@ -1037,13 +1043,13 @@ export const HomePage: React.FC = () => {
               height: "48px",
               borderRadius: "16px",
               background: "#ffffff",
-              boxShadow: "0 4px 14px rgba(5, 150, 105, 0.2)",
+              boxShadow: "0 4px 14px rgba(2, 132, 199, 0.2)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
             }}
           >
-            <Leaf size={26} color="#059669" />
+            <Leaf size={26} color="var(--color-brand)" />
           </div>
 
           <div
@@ -1051,8 +1057,8 @@ export const HomePage: React.FC = () => {
               padding: "4px 14px",
               borderRadius: "9999px",
               background: "#ffffff",
-              border: "1px solid #a7f3d0",
-              color: "#059669",
+              border: "1px solid rgba(56, 189, 248, 0.3)",
+              color: "var(--color-brand)",
               fontSize: "12px",
               fontWeight: 800,
               textTransform: "uppercase",
@@ -1087,8 +1093,8 @@ export const HomePage: React.FC = () => {
               padding: "16px 32px",
               fontSize: "15px",
               fontWeight: 800,
-              background: "linear-gradient(135deg, #059669 0%, #047857 100%)",
-              boxShadow: "0 4px 16px rgba(5, 150, 105, 0.35)",
+              background: "linear-gradient(135deg, #0284c7 0%, #0369a1 100%)",
+              boxShadow: "0 4px 16px rgba(2, 132, 199, 0.35)",
             }}
           >
             Schedule Doorstep Collection Now <ArrowRight size={18} />

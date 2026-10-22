@@ -245,7 +245,7 @@ export const HeroProcessSlider: React.FC = () => {
             style={{
               height: "100%",
               width: `${progress}%`,
-              background: "linear-gradient(90deg, #852d2d 0%, #059669 100%)",
+              background: "linear-gradient(90deg, #0284c7 0%, #38bdf8 100%)",
               transition: isPaused ? "none" : "width 0.05s linear",
             }}
           />
@@ -303,13 +303,13 @@ export const HeroProcessSlider: React.FC = () => {
                 boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
               }}
             >
-              <SanitaryMark size={16} color="#852d2d" />
+              <SanitaryMark size={16} color="#38bdf8" />
               <SanitaryLogo variant="full" size={17} color="#0f172a" />
               <span
                 style={{
                   fontSize: "10px",
                   fontWeight: 800,
-                  color: "#059669",
+                  color: "var(--color-brand)",
                   letterSpacing: "0.06em",
                   textTransform: "uppercase",
                   paddingLeft: "6px",
@@ -337,7 +337,7 @@ export const HeroProcessSlider: React.FC = () => {
                 boxShadow: "0 2px 8px rgba(0, 0, 0, 0.06)",
               }}
             >
-              <Sparkles size={12} color="#852d2d" />
+              <Sparkles size={12} color="#38bdf8" />
               <span>3s Auto Slide • {currentIndex + 1}/3</span>
             </div>
           </div>
@@ -429,14 +429,14 @@ export const HeroProcessSlider: React.FC = () => {
               }}
             >
               <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                <SanitaryMark size={14} color="#852d2d" />
+                <SanitaryMark size={14} color="#38bdf8" />
                 <SanitaryLogo variant="full" size={15} color="#0f172a" />
               </div>
               <span
                 style={{
                   fontSize: "11px",
                   fontWeight: 800,
-                  color: "#059669",
+                  color: "var(--color-brand)",
                   background: "rgba(5, 150, 105, 0.1)",
                   padding: "2px 8px",
                   borderRadius: "9999px",
@@ -606,7 +606,7 @@ export const HeroProcessSlider: React.FC = () => {
                       width: "18px",
                       height: "18px",
                       borderRadius: "50%",
-                      background: "#059669",
+                      background: "var(--color-brand)",
                       color: "#ffffff",
                       fontSize: "9px",
                       fontWeight: 800,
@@ -619,7 +619,7 @@ export const HeroProcessSlider: React.FC = () => {
                   </div>
                   <span style={{ fontWeight: 600, color: "#334155" }}>Bengaluru</span>
                 </div>
-                <span style={{ fontWeight: 800, color: "#059669" }}>₹49.00</span>
+                <span style={{ fontWeight: 800, color: "var(--color-brand)" }}>₹49.00</span>
               </div>
 
               <div

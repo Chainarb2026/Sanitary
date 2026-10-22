@@ -30,7 +30,7 @@ export const Footer: React.FC = () => {
                 style={{
                   fontSize: "10px",
                   fontWeight: 700,
-                  color: "#34d399",
+                  color: "#38bdf8",
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
                   marginTop: "2px",
@@ -179,7 +179,7 @@ export const Footer: React.FC = () => {
               borderRadius: "var(--radius-md)",
             }}
           >
-            <SanitaryMark size={18} color="#34d399" />
+            <SanitaryMark size={18} color="#38bdf8" />
             <div style={{ fontSize: "11px", color: "#f8fafc", fontWeight: 600 }}>
               Zero-Loss Certified Architecture
             </div>
